@@ -54,7 +54,7 @@
 
         /* Section Styling */
         .section {
-            padding: 100px 20px;
+            padding: 100px 40px; /* Increased padding for wider layout */
             opacity: 0; /* Start hidden */
             transform: translateY(50px); /* Start slightly below */
             transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for animation */
@@ -66,7 +66,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px; /* Increased maximum width */
             margin: 0 auto;
         }
 
@@ -97,7 +97,7 @@
             align-items: center;
             justify-content: space-between;
             text-align: left;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            flex-wrap: nowrap; /* Prevent wrapping */
         }
 
         .about-image {
@@ -105,7 +105,7 @@
             height: auto;
             margin-right: 20px;
             border-radius: 10px; /* Optional rounded corners for the image */
-            flex: 1 1 300px; /* Flex property for responsive behavior */
+            flex: 0 0 300px; /* Fixed width for the image */
         }
 
         /* Adjustments for smaller screens */
@@ -124,6 +124,7 @@
             .about-image {
                 margin: 0 0 20px 0; /* Add space below the image */
                 max-width: 100%; /* Make the image responsive */
+                flex: 1 0 100%; /* Allow the image to take full width */
             }
 
             h2 {
@@ -186,7 +187,7 @@
             <!-- Replace with your image link -->
             <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Ziggy Token" class="about-image">
             <div>
-                <h2>What is Ziggy?</h2>
+                <h2>What Is Ziggy?</h2>
                 <p>Ziggy ($ZIGGY) is a community-driven memecoin, designed for fun and engagement in the world of decentralized finance. We aim to make cryptocurrency accessible and enjoyable while building a dedicated community. Our token is fast, secure, and ready to take the memecoin universe by storm!</p>
             </div>
         </div>
