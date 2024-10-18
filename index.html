@@ -28,18 +28,25 @@
             position: relative; /* To position the bubble relative to this container */
         }
 
+        .image-container {
+            position: relative; /* Container for absolute positioning */
+            display: inline-block; /* Keep it inline with the text */
+        }
+
         .about-image {
             max-width: 300px;
             height: auto;
             cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.2s ease; /* Add transition for the shake effect */
-            position: relative; /* Change to relative to keep it in place */
+            position: absolute; /* Overlap images */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
         }
 
         /* Non-interactive Image */
         .about-image-back {
             pointer-events: none; /* Disable interaction */
-            opacity: 0; /* Optional: make it semi-transparent */
+            opacity: 0.5; /* Optional: make it semi-transparent */
         }
 
         /* Speech Bubble */
@@ -128,13 +135,15 @@
 
     <!-- Centered Content -->
     <div class="content">
-        <!-- Non-interactive image -->
-        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" 
-             alt="Ziggy Token Back" class="about-image about-image-back"> <!-- Replace with your URL -->
-        
-        <!-- Interactive image -->
-        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background%20head%20only.png" 
-             alt="Ziggy Token Front" class="about-image" id="panda-image"> <!-- Replace with your URL -->
+        <div class="image-container">
+            <!-- Non-interactive image -->
+            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" 
+                 alt="Ziggy Token Back" class="about-image about-image-back"> <!-- Replace with your URL -->
+            
+            <!-- Interactive image -->
+            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background%20head%20only.png" 
+                 alt="Ziggy Token Front" class="about-image" id="panda-image"> <!-- Replace with your URL -->
+        </div>
         
         <h2>COMING SOON...</h2>
         <div class="speech-bubble" id="speech-bubble">Hey, that tickles!</div>
