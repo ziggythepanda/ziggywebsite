@@ -96,12 +96,20 @@
         .centered-image-section {
             text-align: center; /* Center the image */
             padding: 40px 0; /* Add some padding */
+            position: relative; /* Position relative for absolute child */
+            overflow: hidden; /* Hide overflow for shrinking effect */
         }
 
         .centered-image {
             max-width: 100%; /* Make sure the image is responsive */
             height: auto; /* Maintain aspect ratio */
             max-height: 400px; /* Adjust maximum height as needed */
+            transition: transform 0.5s ease; /* Smooth transition for scaling */
+            position: absolute; /* Position absolute to control shrink */
+            top: 0; /* Align to top */
+            left: 0; /* Align to left */
+            right: 0; /* Align to right */
+            margin: auto; /* Center image */
         }
 
         /* Section Styling */
@@ -272,8 +280,8 @@
     </div>
 
     <!-- Centered Image Section -->
-    <section class="centered-image-section">
-        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER%20-%20no%20logo.png" alt="Centered Image" class="centered-image">
+    <section class="centered-image-section" id="image-section">
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER%20-%20no%20logo.png" alt="Centered Image" class="centered-image" id="centered-image">
     </section>
 
     <!-- About Section -->
@@ -348,6 +356,17 @@
             const menu = document.getElementById('menu');
             menu.classList.toggle('show');
         }
+
+        // Shrink the image on scroll
+        window.addEventListener('scroll', function() {
+            const imageSection = document.getElementById('image-section');
+            const centeredImage = document.getElementById('centered-image');
+            const scrollPosition = window.scrollY;
+
+            // Adjust the image size based on scroll position
+            const scale = Math.max(0.5, 1 - scrollPosition / 1000);
+            centeredImage.style.transform = `scale(${scale})`;
+        });
     </script>
 </body>
 </html>
