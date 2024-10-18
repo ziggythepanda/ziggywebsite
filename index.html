@@ -25,6 +25,7 @@
         /* Centered Content */
         .content {
             text-align: center;
+            position: relative; /* To position the bubble relative to this container */
         }
 
         .about-image {
@@ -40,7 +41,7 @@
             position: absolute;
             bottom: 100%; /* Position above the image */
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -10px); /* Adjust vertical position */
             background-color: #fff;
             color: #121212;
             padding: 10px;
@@ -84,9 +85,10 @@
 
             // Show the speech bubble
             speechBubble.style.display = 'block';
+            // Hide the speech bubble after 2 seconds
             setTimeout(() => {
                 speechBubble.style.display = 'none'; // Hide after a short delay
-            }, 2000); // Adjust delay as needed
+            }, 2000);
         });
     </script>
 </body>
