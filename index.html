@@ -33,6 +33,16 @@
             height: auto;
             cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.2s ease; /* Add transition for the shake effect */
+            position: absolute; /* Positioning to overlap */
+            top: 0; /* Align to the top */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust to center */
+        }
+
+        /* Non-interactive Image */
+        .about-image-back {
+            pointer-events: none; /* Disable interaction */
+            opacity: 0.5; /* Optional: make it semi-transparent */
         }
 
         /* Speech Bubble */
@@ -116,9 +126,15 @@
 
     <!-- Centered Content -->
     <div class="content">
+        <!-- Non-interactive image -->
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" 
+             alt="Ziggy Token Back" class="about-image about-image-back"> <!-- Replace with your URL -->
+        
+        <!-- Interactive image -->
         <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background%20head%20only.png" 
-             alt="Ziggy Token" class="about-image" id="panda-image">
-        <h2>COMING SOON</h2>
+             alt="Ziggy Token Front" class="about-image" id="panda-image"> <!-- Replace with your URL -->
+        
+        <h2>COMING SOON.</h2>
         <div class="speech-bubble" id="speech-bubble">Hey, that tickles!</div>
     </div>
 
