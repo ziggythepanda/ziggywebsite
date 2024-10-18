@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ziggy ($ZIGGY)">
     <title>Ziggy</title>
-    <!-- Font Euclid Circular B -->
     <link href="Fonts/Euclid Circular B Regular.ttf" rel="stylesheet"> <!-- Replace with your font URL -->
 
     <style>
         /* General Body Styling */
         body {
             margin: 0;
-            font-family: 'Euclid Circular B', sans-serif; /* Use Euclid Circular B font */
-            background-color: #121212; /* Solid dark gray background */
+            font-family: 'Euclid Circular B', sans-serif;
+            background-color: #121212;
             color: #333;
             scroll-behavior: smooth;
         }
@@ -94,58 +93,58 @@
 
         /* Centered Image Section Styling */
         .centered-image-section {
-            text-align: center; /* Center the image */
-            padding: 40px 0; /* Add some padding */
-            position: relative; /* Position relative for absolute child */
-            overflow: hidden; /* Hide overflow for shrinking effect */
-            height: 400px; /* Set a fixed height for the section */
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
+            height: 400px;
         }
 
         .centered-image {
-            max-width: 100%; /* Ensure image fills the width of the section */
-            height: auto; /* Maintain aspect ratio */
-            max-height: 400px; /* Ensure it does not exceed 400px */
-            transition: transform 0.5s ease; /* Smooth transition for scaling */
-            position: absolute; /* Position absolute to control shrink */
-            top: 0; /* Align to top */
-            left: 50%; /* Center horizontally */
-            transform: translate(-50%, 0); /* Center image */
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            transition: transform 0.5s ease;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
         }
 
         /* Section Styling */
         .section {
-            padding: 100px 40px; /* Increased padding for wider layout */
+            padding: 100px 40px;
             margin-top: 60px; /* Added margin to create space between sections */
-            opacity: 0; /* Start hidden */
-            transform: translateY(50px); /* Start slightly below */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for animation */
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .section.visible {
-            opacity: 1; /* Fade in */
-            transform: translateY(0); /* Slide in */
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .left-slide {
-            transform: translateX(-100%); /* Slide in from the left */
+            transform: translateX(-100%);
         }
 
         .right-slide {
-            transform: translateX(100%); /* Slide in from the right */
+            transform: translateX(100%);
         }
 
         .container {
-            max-width: 1200px; /* Increased maximum width */
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         /* Updated Styling for Headers */
         h2 {
             font-size: 32px;
-            color: #fff; /* White font color */
-            text-align: left; /* Left justified */
-            font-weight: bold; /* Bold */
-            margin-bottom: 20px; /* Adds some space below the headers */
+            color: #fff;
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
         p, ol {
@@ -166,67 +165,67 @@
             align-items: center;
             justify-content: space-between;
             text-align: left;
-            flex-wrap: nowrap; /* Prevent wrapping */
+            flex-wrap: nowrap;
         }
 
         .about-image, .tokenomics-image {
             max-width: 300px;
             height: auto;
             margin-right: 20px;
-            border-radius: 10px; /* Optional rounded corners for the image */
-            flex: 0 0 300px; /* Fixed width for the image */
+            border-radius: 10px;
+            flex: 0 0 300px;
         }
 
         /* Clickable Terms Styling */
         .clickable-term {
             cursor: pointer;
-            color: #5547c9; /* Color for terms */
-            margin-right: 10px; /* Space between terms */
+            color: #5547c9;
+            margin-right: 10px;
             transition: color 0.3s;
         }
 
         .clickable-term:hover {
-            text-decoration: underline; /* Underline on hover */
+            text-decoration: underline;
         }
 
         /* Adjustments for smaller screens */
         @media (max-width: 768px) {
             header {
-                flex-direction: column; /* Stack header items */
-                align-items: flex-start; /* Align items to the left */
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .about-container {
-                flex-direction: column; /* Stack image and text */
+                flex-direction: column;
                 align-items: left; 
                 text-align: left; 
             }
 
             h2 {
-                font-size: 28px; /* Adjust header size for mobile */
+                font-size: 28px;
             }
 
             p, ol {
-                font-size: 16px; /* Adjust text size for mobile */
+                font-size: 16px;
             }
 
             .hamburger {
-                display: flex; /* Show hamburger icon on mobile */
+                display: flex;
             }
 
             .menu {
-                position: absolute; /* Position menu absolutely */
-                top: 70px; /* Position below the header */
-                right: 20px; /* Align to the right */
+                position: absolute;
+                top: 70px;
+                right: 20px;
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
             }
 
             .menu.show {
-                display: flex; /* Show menu when toggled */
+                display: flex;
             }
 
             nav {
-                display: none; /* Hide default navigation */
+                display: none;
             }
         }
 
@@ -247,7 +246,7 @@
         }
 
         ul li a:hover {
-            color: #1fa7cb; /* Change on hover */
+            color: #1fa7cb;
         }
 
         /* Footer Styling */
