@@ -126,8 +126,12 @@
         // Add click event listener to the panda image
         const pandaImage = document.getElementById('panda-image');
         const speechBubble = document.getElementById('speech-bubble');
+        let clickCount = 0; // Initialize click counter
 
         pandaImage.addEventListener('click', function() {
+            // Increment the click count
+            clickCount += 1;
+
             // Shake the image
             pandaImage.style.animation = 'shake 0.5s';
             setTimeout(() => {
@@ -136,6 +140,12 @@
 
             // Show the speech bubble
             speechBubble.style.display = 'block';
+
+            // Change speech bubble text on the tenth click
+            if (clickCount === 10) {
+                speechBubble.textContent = 'SERIOUSLY, STOP!';
+            }
+
             // Hide the speech bubble after 2 seconds
             setTimeout(() => {
                 speechBubble.style.display = 'none'; // Hide after a short delay
