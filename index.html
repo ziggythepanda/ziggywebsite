@@ -102,13 +102,14 @@
         }
 
         .centered-image {
-            max-width: none; /* Allow the image to scale based on parent */
-            height: 100%; /* Make it fill the height of the section */
+            width: 100%; /* Make it fill the width of the section */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 400px; /* Ensure it does not exceed 400px */
             transition: transform 0.5s ease; /* Smooth transition for scaling */
             position: absolute; /* Position absolute to control shrink */
             top: 0; /* Align to top */
             left: 50%; /* Center horizontally */
-            transform: translateX(-50%); /* Adjust to center */
+            transform: translate(-50%, 0); /* Center image and keep it aligned */
         }
 
         /* Section Styling */
@@ -363,7 +364,7 @@
 
             // Adjust the image size based on scroll position
             const scale = Math.max(0.75, 1 - scrollPosition / 800); // Adjust scaling range
-            centeredImage.style.transform = `scale(${scale})`;
+            centeredImage.style.transform = `translate(-50%, 0) scale(${scale})`; // Center and scale the image
         });
     </script>
 </body>
