@@ -1,243 +1,258 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Ziggy ($ZIGGY) - The ultimate cryptocurrency memecoin">
-        <title><img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER.png" alt="Ziggy Logo"></title>
-        <!-- Font Euclid Circular B -->
-        <link href="Fonts/Euclid Circular B Regular.ttf" rel="stylesheet"> <!-- Replace with your font URL -->
-    
-        <style>
-            /* General Body Styling */
-            body {
-                margin: 0;
-                font-family: 'Euclid Circular B', sans-serif; /* Use Euclid Circular B font */
-                src: url('Fonts/Euclid Circular B Regular.ttf') format('truetype'); /* Adjust the path as necessary */
-                background-color: #121212; /* Solid dark gray background */
-                color: #333;
-                scroll-behavior: smooth;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ziggy ($ZIGGY) - The ultimate cryptocurrency memecoin">
+    <title>Ziggy</title>
+    <!-- Font Euclid Circular B -->
+    <link href="Fonts/Euclid Circular B Regular.ttf" rel="stylesheet"> <!-- Replace with your font URL -->
+
+    <style>
+        /* General Body Styling */
+        body {
+            margin: 0;
+            font-family: 'Euclid Circular B', sans-serif; /* Use Euclid Circular B font */
+            background-color: #121212; /* Solid dark gray background */
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust the height of the logo as needed */        
+        }
+
+        /* Transparent Header Styling */
+        header {
+            background-color: #121212;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        header span {
+            color: #5547c9; /* Similar to MetaMask's accent color */
+        }
+
+        nav a {
+            margin-left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        nav a:hover {
+            color: #5547c9; /* Accent on hover */
+        }
+
+        /* Centered Image Section Styling */
+        .centered-image-section {
+            text-align: center; /* Center the image */
+            padding: 40px 0; /* Add some padding */
+        }
+
+        .centered-image {
+            max-width: 100%; /* Make sure the image is responsive */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 400px; /* Adjust maximum height as needed */
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 40px; /* Increased padding for wider layout */
+            opacity: 0; /* Start hidden */
+            transform: translateY(50px); /* Start slightly below */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for animation */
+        }
+
+        .section.visible {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Slide in */
+        }
+
+        .container {
+            max-width: 1200px; /* Increased maximum width */
+            margin: 0 auto;
+        }
+
+        /* Updated Styling for Headers */
+        h2 {
+            font-size: 32px;
+            color: #fff; /* White font color */
+            text-align: left; /* Left justified */
+            font-weight: bold; /* Bold */
+            margin-bottom: 20px; /* Adds some space below the headers */
+        }
+
+        p, ol {
+            font-size: 18px;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Ordered List Styling */
+        ol {
+            padding-left: 40px;
+            text-align: left;
+        }
+
+        /* About Section with Image */
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+            flex-wrap: nowrap; /* Prevent wrapping */
+        }
+
+        .about-image {
+            max-width: 300px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 10px; /* Optional rounded corners for the image */
+            flex: 0 0 300px; /* Fixed width for the image */
+        }
+
+        /* Adjustments for smaller screens */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* Stack header items */
+                align-items: flex-start; /* Align items to the left */
             }
 
-            .logo img {
-                height: 50px; /* Adjust the height of the logo as needed */        
-            }
-    
-            /* Transparent Header Styling */
-            header {
-                background-color: transparent;
-                color: white;
-                padding: 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                position: sticky;
-                top: 0;
-                z-index: 10;
-            }
-    
-            header h1 {
-                font-size: 24px;
-                margin: 0;
-                font-weight: 700;
-            }
-    
-            header span {
-                color: #5547c9; /* Similar to MetaMask's accent color */
-            }
-    
-            nav a {
-                margin-left: 20px;
-                color: white;
-                text-decoration: none;
-                font-weight: 700;
-            }
-    
-            nav a:hover {
-                color: #5547c9; /* Accent on hover */
-            }
-    
-            /* Section Styling */
-            .section {
-                padding: 100px 40px; /* Increased padding for wider layout */
-                opacity: 0; /* Start hidden */
-                transform: translateY(50px); /* Start slightly below */
-                transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for animation */
-            }
-    
-            .section.visible {
-                opacity: 1; /* Fade in */
-                transform: translateY(0); /* Slide in */
-            }
-    
-            .container {
-                max-width: 1200px; /* Increased maximum width */
-                margin: 0 auto;
-            }
-    
-            /* Updated Styling for Headers */
-            h2 {
-                font-size: 32px;
-                color: #fff; /* White font color */
-                text-align: left; /* Left justified */
-                font-weight: bold; /* Bold */
-                margin-bottom: 20px; /* Adds some space below the headers */
-            }
-    
-            p, ol {
-                font-size: 18px;
-                color: #fff;
-                line-height: 1.6;
-            }
-    
-            /* Ordered List Styling */
-            ol {
-                padding-left: 40px;
-                text-align: left;
-            }
-    
-            /* About Section with Image */
             .about-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                text-align: left;
-                flex-wrap: nowrap; /* Prevent wrapping */
+                flex-direction: column; /* Stack image and text */
+                align-items: left; 
+                text-align: left; 
             }
-    
-            .about-image {
-                max-width: 300px;
-                height: auto;
-                margin-right: 20px;
-                border-radius: 10px; /* Optional rounded corners for the image */
-                flex: 0 0 300px; /* Fixed width for the image */
+
+            h2 {
+                font-size: 28px; /* Adjust header size for mobile */
             }
-    
-            /* Adjustments for smaller screens */
-            @media (max-width: 768px) {
-                header {
-                    flex-direction: column; /* Stack header items */
-                    align-items: flex-start; /* Align items to the left */
-                }
-    
-                .about-container {
-                    flex-direction: column; /* Stack image and text */
-                    align-items: left; 
-                    text-align: left; 
-                }
-    
-                h2 {
-                    font-size: 28px; /* Adjust header size for mobile */
-                }
-    
-                p, ol {
-                    font-size: 16px; /* Adjust text size for mobile */
-                }
+
+            p, ol {
+                font-size: 16px; /* Adjust text size for mobile */
             }
-    
-            /* Links Section Styling */
-            ul {
-                list-style-type: none;
-                padding: 0;
-            }
-    
-            ul li {
-                margin: 10px 0;
-            }
-    
-            ul li a {
-                color: #1fa7cb;
-                font-weight: 700;
-                text-decoration: none;
-            }
-    
-            ul li a:hover {
-                color: #1fa7cb; /* Change on hover */
-            }
-    
-            /* Footer Styling */
-            footer {
-                background-color: #1c1c1c;
-                color: white;
-                padding: 20px;
-                text-align: center;
-                position: relative;
-                bottom: 0;
-                width: 100%;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Header Section -->
-        <header>
-            <div class="logo">
-                <h1><img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER.png" alt="Ziggy Logo"></h1>
+        }
+
+        /* Links Section Styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        ul li a {
+            color: #1fa7cb;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        ul li a:hover {
+            color: #1fa7cb; /* Change on hover */
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #1c1c1c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1><img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER.png" alt="Ziggy Logo"></h1>
+        </div>
+        <nav>
+            <a href="#about">Why Ziggy?</a>
+            <a href="#buy">How to Buy!</a>
+            <a href="#links">Join The Community!</a>
+        </nav>
+    </header>
+
+    <!-- Centered Image Section -->
+    <section class="centered-image-section">
+        <img src="https://your-image-url.com/your-image.png" alt="Centered Image" class="centered-image">
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container about-container">
+            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Ziggy Token" class="about-image">
+            <div>
+                <h2>Why Ziggy the Panda?</h2>
+                <p>• The first community-owned memecoin on Zigchain </p>
+                <p>• Commemorating Zignaly's beginning with a nod towards some of the early test code shared with the community  </p>
+                <p>• Representing the peace and harmony that Zignaly promotes with their community-first approach  </p>
             </div>
-            <nav>
-                <a href="#about">Why Ziggy?</a>
-                <a href="#buy">How to Buy!</a>
-                <a href="#links">Join The Community!</a>
-            </nav>
-        </header>
-    
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="container about-container">
-                <!-- Replace with your image link -->
-                <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Ziggy Token" class="about-image">
-                <div>
-                    <h2>Why Ziggy the Panda?</h2>
-                    <p>• The first community-owned memecoin on Zigchain </p>
-                    <p>• Commemorating Zignaly's beginning with a nod towards some of the early test code shared with the community  </p>
-                    <p>• Representing the peace and harmony that Zignaly promotes with their community-first approach  </p>
-                </div>
-            </div>
-        </section>
-    
-        <!-- How to Buy Section -->
-        <section id="buy" class="section">
-            <div class="container">
-                <h2>How to Buy!</h2>
-                <p>COMING SOON.</p>
-            </div>
-        </section>
-    
-        <!-- Links Section -->
-        <section id="links" class="section">
-            <div class="container">
-                <h2>Join the Community!</h2>
-                <ul>
-                    <li><a href="https://twitter.com/ziggythepanda" target="_blank">Twitter</a></li>
-                </ul>
-            </div>
-        </section>
-    
-        <!-- Footer -->
-        <footer>
-            <p>Be a part of the wealth generation.</p>
-        </footer>
-    
-        <script>
-            // Intersection Observer for scroll animations
-            const sections = document.querySelectorAll('.section');
-    
-            const options = {
-                root: null,
-                threshold: 0.1, // Trigger when 10% of the section is visible
-            };
-    
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible'); // Add visible class to section
-                        observer.unobserve(entry.target); // Stop observing once visible
-                    }
-                });
-            }, options);
-    
-            sections.forEach(section => {
-                observer.observe(section); // Observe each section
+        </div>
+    </section>
+
+    <!-- How to Buy Section -->
+    <section id="buy" class="section">
+        <div class="container">
+            <h2>How to Buy!</h2>
+            <p>COMING SOON.</p>
+        </div>
+    </section>
+
+    <!-- Links Section -->
+    <section id="links" class="section">
+        <div class="container">
+            <h2>Join the Community!</h2>
+            <ul>
+                <li><a href="https://twitter.com/ziggythepanda" target="_blank">Twitter</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Be a part of the wealth generation.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const sections = document.querySelectorAll('.section');
+
+        const options = {
+            root: null,
+            threshold: 0.1, // Trigger when 10% of the section is visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible'); // Add visible class to section
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
             });
-        </script>
-    </body>
-    </html>
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section); // Observe each section
+        });
+    </script>
+</body>
+</html>
