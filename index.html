@@ -98,18 +98,17 @@
             padding: 40px 0; /* Add some padding */
             position: relative; /* Position relative for absolute child */
             overflow: hidden; /* Hide overflow for shrinking effect */
+            height: 400px; /* Set a fixed height for the section */
         }
 
         .centered-image {
-            max-width: 100%; /* Make sure the image is responsive */
-            height: auto; /* Maintain aspect ratio */
-            max-height: 400px; /* Adjust maximum height as needed */
+            max-width: none; /* Allow the image to scale based on parent */
+            height: 100%; /* Make it fill the height of the section */
             transition: transform 0.5s ease; /* Smooth transition for scaling */
             position: absolute; /* Position absolute to control shrink */
             top: 0; /* Align to top */
-            left: 0; /* Align to left */
-            right: 0; /* Align to right */
-            margin: auto; /* Center image */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust to center */
         }
 
         /* Section Styling */
@@ -359,12 +358,11 @@
 
         // Shrink the image on scroll
         window.addEventListener('scroll', function() {
-            const imageSection = document.getElementById('image-section');
             const centeredImage = document.getElementById('centered-image');
             const scrollPosition = window.scrollY;
 
             // Adjust the image size based on scroll position
-            const scale = Math.max(0.5, 1 - scrollPosition / 1000);
+            const scale = Math.max(0.75, 1 - scrollPosition / 800); // Adjust scaling range
             centeredImage.style.transform = `scale(${scale})`;
         });
     </script>
