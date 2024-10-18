@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ziggy ($ZIGGY) - The ultimate cryptocurrency memecoin">
+    <meta name="description" content="Ziggy ($ZIGGY)">
     <title>Ziggy</title>
     <!-- Font Euclid Circular B -->
     <link href="Fonts/Euclid Circular B Regular.ttf" rel="stylesheet"> <!-- Replace with your font URL -->
@@ -124,6 +124,23 @@
             flex: 0 0 300px; /* Fixed width for the image */
         }
 
+        /* Dropdown Styling */
+        .dropdown {
+            margin-top: 10px; /* Add some space above the dropdown */
+            padding: 10px; /* Add padding for a better look */
+            font-size: 16px; /* Font size */
+            border: 1px solid #ccc; /* Border styling */
+            border-radius: 5px; /* Rounded corners */
+            background-color: #fff; /* Background color */
+            color: #333; /* Text color */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        .dropdown:focus {
+            outline: none; /* Remove default outline */
+            border-color: #5547c9; /* Change border color on focus */
+        }
+
         /* Adjustments for smaller screens */
         @media (max-width: 768px) {
             header {
@@ -201,10 +218,15 @@
         <div class="container about-container">
             <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Ziggy Token" class="about-image">
             <div>
-                <h2>Why Ziggy the Panda?</h2>
-                <p>• The first community-owned memecoin on Zigchain </p>
-                <p>• Commemorating Zignaly's beginning with a nod towards some of the early test code shared with the community  </p>
-                <p>• Representing the peace and harmony that Zignaly promotes with their community-first approach  </p>
+                <h2>What is <span id="dropdown-value">Ziggy</span>?</h2>
+                <select id="value-dropdown" class="dropdown" onchange="updateValue()">
+                    <option value="Ziggy" selected>Ziggy</option>
+                    <option value="Zignaly">Zignaly</option>
+                    <option value="Zigchain">Zigchain</option>
+                </select>
+                <p>• The first community-owned memecoin on Zigchain.</p>
+                <p>• Commemorating Zignaly's beginning with a nod towards some of the early test code shared with the community.</p>
+                <p>• Representing the peace and harmony that Zignaly promotes with their community-first approach.</p>
             </div>
         </div>
     </section>
@@ -253,6 +275,13 @@
         sections.forEach(section => {
             observer.observe(section); // Observe each section
         });
+
+        // Update the displayed value in the heading
+        function updateValue() {
+            const dropdown = document.getElementById('value-dropdown');
+            const selectedValue = dropdown.options[dropdown.selectedIndex].value;
+            document.getElementById('dropdown-value').textContent = selectedValue;
+        }
     </script>
 </body>
 </html>
