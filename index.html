@@ -114,10 +114,14 @@
         /* Section Styling */
         .section {
             padding: 100px 40px;
-            margin-top: 120px; /* Maintain increased margin */
+            margin-top: 120px; /* Maintain increased margin between sections */
             opacity: 0; /* Start hidden */
             transform: scale(0.8); /* Start smaller */
             transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for zoom effect */
+        }
+
+        #about {
+            margin-top: 40px; /* Decreased margin between centered image and the About section */
         }
 
         .section.visible {
