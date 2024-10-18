@@ -28,11 +28,51 @@
             position: relative; /* To position the bubble relative to this container */
         }
 
+        /* Coming Soon Message */
+        h2 {
+            font-size: 64px; /* Larger font size for impact */
+            font-weight: 600; /* Medium bold text */
+            margin-top: 20px; /* Add space above */
+            text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+            background: linear-gradient(90deg, #a7c0ff, #6a11cb); /* Lighter gradient background */
+            -webkit-background-clip: text; /* Clip background to text */
+            -webkit-text-fill-color: transparent; /* Fill text with transparent color */
+            animation: fadeIn 1s ease; /* Fade-in animation */
+            letter-spacing: 2px; /* Add some space between letters */
+            font-family: 'Euclid Circular B', sans-serif; /* Use the same font */
+            line-height: 1.2; /* Increase line height for better readability */
+        }
+
         .about-image {
             max-width: 300px;
             height: auto;
             cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.2s ease; /* Add transition for the shake effect */
+        }
+
+        /* Button Container */
+        .button-container {
+            margin-top: 20px; /* Space above buttons */
+            display: flex;
+            justify-content: center; /* Center buttons horizontally */
+            gap: 20px; /* Space between buttons */
+        }
+
+        /* Button Styling */
+        .button {
+            position: relative;
+            overflow: hidden; /* Hide the fill effect */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 15px 30px; /* Padding */
+            font-size: 18px; /* Font size */
+            cursor: not-allowed; /* Change cursor to indicate disabled state */
+            font-family: 'Euclid Circular B', sans-serif; /* Use the same font */
+            background: linear-gradient(90deg, #6a11cb, #2575fc); /* Purple to blue gradient */
+            opacity: 0.5; /* Gray out the buttons */
+            transition: transform 0.2s; /* Transition for button lift effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
         }
 
         /* Speech Bubble */
@@ -64,18 +104,6 @@
             border-width: 10px; /* Tail size */
             border-style: solid;
             border-color: #ffcc00 transparent transparent transparent; /* Tail color */
-        }
-
-        /* Coming Soon Message */
-        h2 {
-            font-size: 48px; /* Larger font size */
-            font-weight: 700; /* Bold text */
-            margin-top: 20px; /* Add space above */
-            text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-            background: linear-gradient(90deg, #ff0080, #ff8c00); /* Gradient background */
-            -webkit-background-clip: text; /* Clip background to text */
-            -webkit-text-fill-color: transparent; /* Fill text with transparent color */
-            animation: fadeIn 1s ease; /* Fade-in animation */
         }
 
         /* Fade-in Animation */
@@ -116,9 +144,15 @@
 
     <!-- Centered Content -->
     <div class="content">
+        <h2>COMING SOON</h2>
         <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" 
              alt="Ziggy Token" class="about-image" id="panda-image">
-        <h2>COMING SOON</h2>
+        
+        <div class="button-container">
+            <button class="button" onclick="/* window.open('link-to-whitepaper', '_blank'); */">Read Whitepaper</button>
+            <button class="button" onclick="/* window.open('link-to-site', '_self'); */">Enter Site</button>
+        </div>
+        
         <div class="speech-bubble" id="speech-bubble">Hey, that tickles!</div>
     </div>
 
