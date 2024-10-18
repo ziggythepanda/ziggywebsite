@@ -115,6 +115,7 @@
         /* Section Styling */
         .section {
             padding: 100px 40px; /* Increased padding for wider layout */
+            margin-top: 60px; /* Added margin to create space between sections */
             opacity: 0; /* Start hidden */
             transform: translateY(50px); /* Start slightly below */
             transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for animation */
@@ -168,15 +169,7 @@
             flex-wrap: nowrap; /* Prevent wrapping */
         }
 
-        .about-image {
-            max-width: 300px;
-            height: auto;
-            margin-right: 20px;
-            border-radius: 10px; /* Optional rounded corners for the image */
-            flex: 0 0 300px; /* Fixed width for the image */
-        }
-
-        .tokenomics-image {
+        .about-image, .tokenomics-image {
             max-width: 300px;
             height: auto;
             margin-right: 20px;
@@ -270,6 +263,7 @@
     </style>
 </head>
 <body>
+
     <!-- Header Section -->
     <header>
         <div class="logo">
@@ -319,14 +313,14 @@
         </div>
     </section>
 
-     <!-- Tokenomics Section -->
-     <section id="tokenomics" class="section left-slide">
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="section left-slide">
         <div class="container about-container">
             <div>
                 <h2>TOKENOMICS</h2>
                 <p id="content-text">COMING SOON.</p>
             </div>
-                <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Tokenomics" class="tokenomics-image">
+            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Tokenomics" class="tokenomics-image">
         </div>
     </section>  
 
