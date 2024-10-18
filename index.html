@@ -28,25 +28,13 @@
             position: relative; /* To position the bubble relative to this container */
         }
 
-        .image-container {
-            position: relative; /* Container for absolute positioning */
-            display: flex; /* Use flexbox to center images */
-            justify-content: center; /* Center the images horizontally */
-            align-items: center; /* Center the images vertically */
-            margin-bottom: 20px; /* Space below the images */
-        }
-
         .about-image {
             max-width: 300px;
             height: auto;
             cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.2s ease; /* Add transition for the shake effect */
-            position: absolute; /* Overlap images */
-            top: 0; /* Align to the top */
-            left: 0; /* Align to the left */
         }
 
-        /* Non-interactive Image */
         .about-image-back {
             pointer-events: none; /* Disable interaction */
             opacity: 1; /* Optional: make it semi-transparent */
@@ -55,8 +43,10 @@
         /* Speech Bubble */
         .speech-bubble {
             display: none; /* Initially hidden */
-            position: relative; /* Change to relative to position below the text */
-            margin-top: 10px; /* Space above the speech bubble */
+            position: absolute;
+            bottom: 100%; /* Position above the image */
+            left: 50%;
+            transform: translate(-50%, -10px); /* Adjust vertical position */
             background-color: #ffcc00; /* Bright background color */
             color: #121212;
             padding: 10px 15px; /* Add padding */
@@ -85,7 +75,7 @@
         h2 {
             font-size: 48px; /* Larger font size */
             font-weight: 700; /* Bold text */
-            margin: 0; /* Remove space above and below */
+            margin-top: 20px; /* Add space above */
             text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow */
             background: linear-gradient(90deg, #ff0080, #ff8c00); /* Gradient background */
             -webkit-background-clip: text; /* Clip background to text */
@@ -125,27 +115,18 @@
             75% { transform: translate(-5px); }
             100% { transform: translate(0); }
         }
-
-        /* Animation for the shake effect */
-        .shake {
-            animation: shake 0.5s; /* Trigger shake animation */
-        }
     </style>
 </head>
 <body>
 
     <!-- Centered Content -->
     <div class="content">
-        <div class="image-container">
-            <!-- Non-interactive image -->
-            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" 
-                 alt="Ziggy Token Back" class="about-image about-image-back"> <!-- Replace with your URL -->
-            
-            <!-- Interactive image -->
-            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background%20head%20only.png" 
-                 alt="Ziggy Token Front" class="about-image" id="panda-image"> <!-- Replace with your URL -->
-        </div>
-        
+        <!-- Non-interactive image -->
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" 
+            alt="Ziggy Token Back" class="about-image about-image-back"> <!-- Replace with your URL -->    
+
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background%20head%20only.png" 
+             alt="Ziggy Token" class="about-image" id="panda-image">
         <h2>COMING SOON</h2>
         <div class="speech-bubble" id="speech-bubble">Hey, that tickles!</div>
     </div>
@@ -160,10 +141,10 @@
             // Increment the click count
             clickCount += 1;
 
-            // Add shake class to the image
-            pandaImage.classList.add('shake');
+            // Shake the image
+            pandaImage.style.animation = 'shake 0.5s';
             setTimeout(() => {
-                pandaImage.classList.remove('shake'); // Remove shake class after animation
+                pandaImage.style.animation = ''; // Reset animation
             }, 500);
 
             // Show the speech bubble
