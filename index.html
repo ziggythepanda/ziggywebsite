@@ -33,14 +33,6 @@
             height: auto;
             cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.2s ease; /* Add transition for the shake effect */
-            top: 0; /* Align to the top */
-            left: 0; /* Align to the left */
-        }
-
-        .about-image-back {
-            pointer-events: none; /* Disable interaction */
-            opacity: 1; /* Optional: make it semi-transparent */
-            position: absolute; /* Overlap images */
         }
 
         /* Speech Bubble */
@@ -78,13 +70,12 @@
         h2 {
             font-size: 48px; /* Larger font size */
             font-weight: 700; /* Bold text */
-            margin-top: 2px; /* Add space above */
+            margin-top: 20px; /* Add space above */
             text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow */
             background: linear-gradient(90deg, #ff0080, #ff8c00); /* Gradient background */
             -webkit-background-clip: text; /* Clip background to text */
             -webkit-text-fill-color: transparent; /* Fill text with transparent color */
             animation: fadeIn 1s ease; /* Fade-in animation */
-            position: absolute; /* Overlap images */
         }
 
         /* Fade-in Animation */
@@ -125,11 +116,7 @@
 
     <!-- Centered Content -->
     <div class="content">
-        <!-- Non-interactive image -->
         <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" 
-            alt="Ziggy Token Back" class="about-image about-image-back"> <!-- Replace with your URL -->    
-
-        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background%20head%20only.png" 
              alt="Ziggy Token" class="about-image" id="panda-image">
         <h2>COMING SOON</h2>
         <div class="speech-bubble" id="speech-bubble">Hey, that tickles!</div>
