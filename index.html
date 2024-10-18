@@ -213,10 +213,8 @@
         <div class="container about-container">
             <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Ziggy Token" class="about-image">
             <div>
-                <h2>What is <span id="dropdown-value">Ziggy</span>? <span class="clickable-term" onclick="updateContent('Ziggy')">Ziggy</span>? <span class="clickable-term" onclick="updateContent('Zignaly')">Zignaly</span>? <span class="clickable-term" onclick="updateContent('Zigchain')">Zigchain</span>?</h2>
+                <h2>What is <span class="clickable-term" onclick="updateContent('Ziggy')">Ziggy</span>? <span class="clickable-term" onclick="updateContent('Zignaly')">Zignaly</span>? <span class="clickable-term" onclick="updateContent('Zigchain')">Zigchain</span>?</h2>? 
                 <p id="content-text">• The first community-owned memecoin on Zigchain.</p>
-                <p id="additional-text">• Commemorating Zignaly's beginning with a nod towards some of the early test code shared with the community.</p>
-                <p id="last-text">• Representing the peace and harmony that Zignaly promotes with their community-first approach.</p>
             </div>
         </div>
     </section>
@@ -276,18 +274,6 @@
 
             document.getElementById('dropdown-value').textContent = value;
             document.getElementById('content-text').textContent = contentText[value];
-            
-            // Optional: Update additional text if needed
-            if (value === "Zignaly") {
-                document.getElementById('additional-text').textContent = "• A platform for automated trading and investment management.";
-                document.getElementById('last-text').textContent = ""; // Clear last text
-            } else if (value === "Zigchain") {
-                document.getElementById('additional-text').textContent = "• The underlying technology that powers the Ziggy ecosystem.";
-                document.getElementById('last-text').textContent = ""; // Clear last text
-            } else {
-                document.getElementById('additional-text').textContent = "• Commemorating Zignaly's beginning with a nod towards some of the early test code shared with the community.";
-                document.getElementById('last-text').textContent = "• Representing the peace and harmony that Zignaly promotes with their community-first approach.";
-            }
         }
     </script>
 </body>
