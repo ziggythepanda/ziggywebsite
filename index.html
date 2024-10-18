@@ -41,10 +41,6 @@
             font-weight: 700;
         }
 
-        header span {
-            color: #5547c9; /* Similar to MetaMask's accent color */
-        }
-
         nav a {
             margin-left: 20px;
             color: white;
@@ -54,6 +50,46 @@
 
         nav a:hover {
             color: #5547c9; /* Accent on hover */
+        }
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .bar {
+            height: 4px;
+            width: 100%;
+            background-color: white;
+            transition: 0.3s;
+        }
+
+        /* Dropdown Menu */
+        .menu {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            background-color: #121212;
+            position: absolute;
+            top: 70px; /* Position below the header */
+            right: 20px; /* Align to the right */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            z-index: 20;
+        }
+
+        .menu a {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            text-align: left;
+        }
+
+        .menu a:hover {
+            background-color: #5547c9; /* Accent color on hover */
         }
 
         /* Centered Image Section Styling */
@@ -156,6 +192,25 @@
             p, ol {
                 font-size: 16px; /* Adjust text size for mobile */
             }
+
+            .hamburger {
+                display: flex; /* Show hamburger icon on mobile */
+            }
+
+            .menu {
+                position: absolute; /* Position menu absolutely */
+                top: 70px; /* Position below the header */
+                right: 20px; /* Align to the right */
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            .menu.show {
+                display: flex; /* Show menu when toggled */
+            }
+
+            nav {
+                display: none; /* Hide default navigation */
+            }
         }
 
         /* Links Section Styling */
@@ -197,12 +252,24 @@
             <h1><img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER.png" alt="Ziggy Logo"></h1>
         </div>
         <nav>
-            <a href="#about">WAT IS IT??</a>
+            <a href="#about">WHAT IS IT?</a>
             <a href="#buy">WHERE TO BUY</a>
-            <a href="#tokenomiics">TOKENOMICS</a>
+            <a href="#tokenomics">TOKENOMICS</a>
             <a href="#links">JOIN THE COMMUNITY</a>
         </nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </header>
+
+    <div class="menu" id="menu">
+        <a href="#about">WHAT IS IT?</a>
+        <a href="#buy">WHERE TO BUY</a>
+        <a href="#tokenomics">TOKENOMICS</a>
+        <a href="#links">JOIN THE COMMUNITY</a>
+    </div>
 
     <!-- Centered Image Section -->
     <section class="centered-image-section">
@@ -214,7 +281,7 @@
         <div class="container about-container">
             <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Ziggy Token" class="about-image">
             <div>
-                <h2>What is... <span class="clickable-term" onclick="updateContent('Ziggy')">Ziggy</span> |  <span class="clickable-term" onclick="updateContent('Zignaly')">Zignaly</span> |  <span class="clickable-term" onclick="updateContent('Zigchain')">Zigchain</span>?</h2>
+                <h2>What is... <span class="clickable-term" onclick="updateContent('Ziggy')">Ziggy</span>|  <span class="clickable-term" onclick="updateContent('Zignaly')">Zignaly</span>|  <span class="clickable-term" onclick="updateContent('Zigchain')">Zigchain</span>?</h2>
                 <p id="content-text">• The first community-owned memecoin on Zigchain.</p>
             </div>
         </div>
@@ -274,18 +341,12 @@
             };
 
             document.getElementById('content-text').textContent = contentText[value];
-            
-            // Optional: Update additional text if needed
-            if (value === "Zignaly") {
-                document.getElementById('additional-text').textContent = "";
-                document.getElementById('last-text').textContent = ""; // Clear last text if needed
-            } else if (value === "Zigchain") {
-                document.getElementById('additional-text').textContent = "";
-                document.getElementById('last-text').textContent = ""; // Clear last text if needed
-            } else {
-                document.getElementById('additional-text').textContent = "• Commemorating Zignaly's beginning with a nod towards some of the early test code shared with the community.";
-                document.getElementById('last-text').textContent = "• Representing the peace and harmony that Zignaly promotes with their community-first approach.";
-            }
+        }
+
+        // Toggle the visibility of the menu
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
         }
     </script>
 </body>
