@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ziggy ($ZIGGY)">
-    <title>Ziggy</title>
+    <title>Ziggy Splash Screen</title>
     <link href="Fonts/Euclid Circular B Regular.ttf" rel="stylesheet"> <!-- Replace with your font URL -->
 
     <style>
@@ -13,100 +13,80 @@
             margin: 0;
             font-family: 'Euclid Circular B', sans-serif;
             background-color: #121212;
-            color: #333;
-            scroll-behavior: smooth;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-            box-sizing: border-box; /* Include padding and border in width and height */
-        }
-
-        *, *::before, *::after {
-            box-sizing: inherit; /* Inherit box-sizing from body */
-        }
-
-        .logo img {
-            height: 50px; /* Adjust the height of the logo as needed */        
-        }
-
-
-        /* About Section with Image */
-        .about-container {
+            color: #fff;
             display: flex;
-            align-items: left;
-            justify-content: space-between;
-            text-align: left;
-            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Prevent scrolling */
+            position: relative;
         }
 
-        .about-image {            
-            max-width: 300px;            
-            height: auto;            
-            margin-right: 20px;            
-            border-radius: 10px;           
-             flex: 0 0 300px;        
+        /* Centered Content */
+        .content {
+            text-align: center;
         }
 
+        .about-image {
+            max-width: 300px;
+            height: auto;
+            cursor: pointer; /* Change cursor to pointer */
+            transition: transform 0.2s ease; /* Add transition for the shake effect */
+        }
 
+        /* Speech Bubble */
+        .speech-bubble {
+            display: none; /* Initially hidden */
+            position: absolute;
+            bottom: 100%; /* Position above the image */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            color: #121212;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            white-space: nowrap; /* Prevent text wrapping */
+            z-index: 1;
+        }
+
+        /* Shake Animation */
+        @keyframes shake {
+            0% { transform: translate(0); }
+            25% { transform: translate(-5px); }
+            50% { transform: translate(5px); }
+            75% { transform: translate(-5px); }
+            100% { transform: translate(0); }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Centered Content -->
+    <div class="content">
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" 
+             alt="Ziggy Token" class="about-image" id="panda-image">
+        <h2>COMING SOON</h2>
+        <div class="speech-bubble" id="speech-bubble">Hey, that tickles!</div>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container about-container">
-            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Ziggy Token" class="about-image">
-            <div>
-                <h2>COMING SOON.</h2>
-            </div>
-        </div>
-    </section>
     <script>
-        // Intersection Observer for scroll animations
-        const sections = document.querySelectorAll('.section');
+        // Add click event listener to the panda image
+        const pandaImage = document.getElementById('panda-image');
+        const speechBubble = document.getElementById('speech-bubble');
 
-        const options = {
-            root: null,
-            threshold: 0.1, // Trigger when 10% of the section is visible
-        };
+        pandaImage.addEventListener('click', function() {
+            // Shake the image
+            pandaImage.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                pandaImage.style.animation = ''; // Reset animation
+            }, 500);
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible'); // Add visible class to section
-                    observer.unobserve(entry.target); // Stop observing once visible
-                }
-            });
-        }, options);
-
-        sections.forEach(section => {
-            observer.observe(section); // Observe each section
-        });
-
-        // Update the displayed content based on the clicked term
-        function updateContent(value) {
-            const contentText = {
-                Ziggy: "Ziggy is an entirely community-owned and community-driven memecoin on Zigchain. More than just a mascot for the chain, Ziggy the Panda commemorates where Zignaly came from and celebrates where Zignaly is headed. Hold your $ZIGGY to prove you are an OG Zigchain user, or use your $ZIGGY to [REDACTED].",
-                Zignaly: "Zignaly is a social investment platform that allows investors to follow expert traders in a seamless manner. This results in not only the investors achieving optimized returns, but hundreds of traders are monetizing on their trading skillset. Learn more at zignaly.com",
-                Zigchain: "ZIGChain, developed by the social investment platform Zignaly, is a Layer 1 blockchain built on the Cosmos ecosystem. Designed to democratize wealth-generation opportunities, ZIGChain is aimed at both professional investors and retail users. The platform creates an inclusive environment that allows anyone to participate in decentralized financial services, previously accessible only to the wealthy elite."
-            };
-
-            document.getElementById('content-text').textContent = contentText[value];
-        }
-
-        // Toggle the visibility of the menu
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('show');
-        }
-
-        // Shrink the image on scroll
-        window.addEventListener('scroll', function() {
-            const centeredImage = document.getElementById('centered-image');
-            const scrollPosition = window.scrollY;
-
-            // Adjust the image size based on scroll position
-            const scale = Math.max(0.75, 1 - scrollPosition / 800); // Adjust scaling range
-            centeredImage.style.transform = `translate(-50%, 0) scale(${scale})`; // Center and scale the image
+            // Show the speech bubble
+            speechBubble.style.display = 'block';
+            setTimeout(() => {
+                speechBubble.style.display = 'none'; // Hide after a short delay
+            }, 2000); // Adjust delay as needed
         });
     </script>
 </body>
