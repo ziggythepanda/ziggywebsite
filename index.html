@@ -6,7 +6,7 @@
     <meta name="description" content="Ziggy ($ZIGGY) - The ultimate cryptocurrency memecoin">
     <title>Ziggy ($ZIGGY) Memecoin</title>
     <!-- Font Euclid Circular B -->
-    <link href="https://github.com/ziggythepanda/ziggywebsite/blob/main/Fonts/Euclid%20Circular%20B%20Light.ttf" rel="stylesheet"> <!-- Replace with your font URL -->
+    <link href="URL_TO_EUCLID_CIRCULAR_B" rel="stylesheet"> <!-- Replace with your font URL -->
 
     <style>
         /* General Body Styling */
@@ -97,6 +97,7 @@
             align-items: center;
             justify-content: space-between;
             text-align: left;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
 
         .about-image {
@@ -104,6 +105,34 @@
             height: auto;
             margin-right: 20px;
             border-radius: 10px; /* Optional rounded corners for the image */
+            flex: 1 1 300px; /* Flex property for responsive behavior */
+        }
+
+        /* Adjustments for smaller screens */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* Stack header items */
+                align-items: flex-start; /* Align items to the left */
+            }
+
+            .about-container {
+                flex-direction: column; /* Stack image and text */
+                align-items: center; /* Center align */
+                text-align: center; /* Center text */
+            }
+
+            .about-image {
+                margin: 0 0 20px 0; /* Add space below the image */
+                max-width: 100%; /* Make the image responsive */
+            }
+
+            h2 {
+                font-size: 28px; /* Adjust header size for mobile */
+            }
+
+            p, ol {
+                font-size: 16px; /* Adjust text size for mobile */
+            }
         }
 
         /* Links Section Styling */
@@ -155,9 +184,9 @@
     <section id="about" class="section">
         <div class="container about-container">
             <!-- Replace with your image link -->
-            <img src="https://github.com/ziggythepanda/ziggywebsite/blob/main/IMAGES/LOGO.PNG?raw=true" alt="Ziggy Token" class="about-image">
+            <img src="https://via.placeholder.com/300" alt="Ziggy Token" class="about-image">
             <div>
-                <h2>What is Ziggy?</h2>
+                <h2>About Ziggy ($ZIGGY)</h2>
                 <p>Ziggy ($ZIGGY) is a community-driven memecoin, designed for fun and engagement in the world of decentralized finance. We aim to make cryptocurrency accessible and enjoyable while building a dedicated community. Our token is fast, secure, and ready to take the memecoin universe by storm!</p>
             </div>
         </div>
