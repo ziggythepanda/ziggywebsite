@@ -21,7 +21,7 @@
             height: 50px; /* Adjust the height of the logo as needed */        
         }
 
-        /* Transparent Header Styling */
+        /* Header Styling */
         header {
             background-color: #121212;
             color: white;
@@ -103,7 +103,7 @@
         .centered-image {
             max-width: 100%;
             height: auto;
-            max-height: 400px;
+            max-height: 300px;
             transition: transform 0.5s ease;
             position: absolute;
             top: 0;
@@ -355,9 +355,9 @@
         // Update the displayed content based on the clicked term
         function updateContent(value) {
             const contentText = {
-                ZIGGY: "• The first community-owned memecoin on Zigchain.",
-                ZIGNALY: "• A platform for automated trading and investment management.",
-                ZIGCHAIN: "• The underlying technology that powers the Ziggy ecosystem."
+                Ziggy: "• The first community-owned memecoin on Zigchain.",
+                Zignaly: "• A platform for automated trading and investment management.",
+                Zigchain: "• The underlying technology that powers the Ziggy ecosystem."
             };
 
             document.getElementById('content-text').textContent = contentText[value];
