@@ -30,14 +30,14 @@
 
         .image-container {
             position: relative; /* Container for absolute positioning */
-            display: inline-block; /* Keep it inline with the text */
-            margin-bottom: 20px; /* Add space below the images */
+            display: flex; /* Use flexbox to center images */
+            justify-content: center; /* Center the images horizontally */
+            align-items: center; /* Center the images vertically */
         }
 
         .about-image {
             max-width: 300px;
             height: auto;
-            cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.2s ease; /* Add transition for the shake effect */
             position: absolute; /* Overlap images */
             top: 0; /* Align to the top */
