@@ -33,11 +33,13 @@
             display: flex; /* Use flexbox to center images */
             justify-content: center; /* Center the images horizontally */
             align-items: center; /* Center the images vertically */
+            margin-bottom: 20px; /* Space below the images */
         }
 
         .about-image {
             max-width: 300px;
             height: auto;
+            cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.2s ease; /* Add transition for the shake effect */
             position: absolute; /* Overlap images */
             top: 0; /* Align to the top */
@@ -53,10 +55,8 @@
         /* Speech Bubble */
         .speech-bubble {
             display: none; /* Initially hidden */
-            position: absolute;
-            bottom: 100%; /* Position above the image */
-            left: 50%;
-            transform: translate(-50%, -10px); /* Adjust vertical position */
+            position: relative; /* Change to relative to position below the text */
+            margin-top: 10px; /* Space above the speech bubble */
             background-color: #ffcc00; /* Bright background color */
             color: #121212;
             padding: 10px 15px; /* Add padding */
@@ -85,7 +85,7 @@
         h2 {
             font-size: 48px; /* Larger font size */
             font-weight: 700; /* Bold text */
-            margin-top: 0; /* Remove space above */
+            margin: 0; /* Remove space above and below */
             text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow */
             background: linear-gradient(90deg, #ff0080, #ff8c00); /* Gradient background */
             -webkit-background-clip: text; /* Clip background to text */
