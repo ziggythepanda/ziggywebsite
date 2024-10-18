@@ -124,21 +124,16 @@
             flex: 0 0 300px; /* Fixed width for the image */
         }
 
-        /* Dropdown Styling */
-        .dropdown {
-            margin-left: 5px; /* Space between text and dropdown */
-            padding: 8px; /* Add padding for a better look */
-            font-size: 16px; /* Font size */
-            border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
-            border-radius: 5px; /* Rounded corners */
-            background-color: #121212; /* Match background color */
-            color: #fff; /* Text color */
-            cursor: pointer; /* Change cursor to pointer */
+        /* Clickable Terms Styling */
+        .clickable-term {
+            cursor: pointer;
+            color: #5547c9; /* Color for terms */
+            margin-right: 10px; /* Space between terms */
+            transition: color 0.3s;
         }
 
-        .dropdown:focus {
-            outline: none; /* Remove default outline */
-            border-color: #5547c9; /* Change border color on focus */
+        .clickable-term:hover {
+            text-decoration: underline; /* Underline on hover */
         }
 
         /* Adjustments for smaller screens */
@@ -202,9 +197,8 @@
             <h1><img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER.png" alt="Ziggy Logo"></h1>
         </div>
         <nav>
-            <a href="#about">What is it??</a>
+            <a href="#about">Why Ziggy?</a>
             <a href="#buy">How to Buy!</a>
-            <a href="#tokenomics">Tokenomics</a>
             <a href="#links">Join The Community!</a>
         </nav>
     </header>
@@ -219,15 +213,10 @@
         <div class="container about-container">
             <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Ziggy Token" class="about-image">
             <div>
-                <h2>What is <span id="dropdown-value">Ziggy</span>?</h2>
-                <select id="value-dropdown" class="dropdown" onchange="updateValue()">
-                    <option value="Ziggy" selected>Ziggy</option>
-                    <option value="Zignaly">Zignaly</option>
-                    <option value="Zigchain">Zigchain</option>
-                </select>
-                <p>• The first community-owned memecoin on Zigchain.</p>
-                <p>• Commemorating Zignaly's beginning with a nod towards some of the early test code shared with the community.</p>
-                <p>• Representing the peace and harmony that Zignaly promotes with their community-first approach.</p>
+                <h2>What is <span id="dropdown-value">Ziggy</span>? <span class="clickable-term" onclick="updateContent('Ziggy')">Ziggy</span>? <span class="clickable-term" onclick="updateContent('Zignaly')">Zignaly</span>? <span class="clickable-term" onclick="updateContent('Zigchain')">Zigchain</span>?</h2>
+                <p id="content-text">• The first community-owned memecoin on Zigchain.</p>
+                <p id="additional-text">• Commemorating Zignaly's beginning with a nod towards some of the early test code shared with the community.</p>
+                <p id="last-text">• Representing the peace and harmony that Zignaly promotes with their community-first approach.</p>
             </div>
         </div>
     </section>
@@ -239,17 +228,6 @@
             <p>COMING SOON.</p>
         </div>
     </section>
-
-    <!-- Tokenomics Section -->
-    <section id="tokenomics" class="section">
-        <div class="container about-container">
-            <div>
-                <h2>Tokenomics</span>?</h2>
-                <p>• Coming soon.</p>
-            </div>
-            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" alt="Ziggy Token" class="about-image">
-        </div>
-    </section>    
 
     <!-- Links Section -->
     <section id="links" class="section">
@@ -288,11 +266,28 @@
             observer.observe(section); // Observe each section
         });
 
-        // Update the displayed value in the heading
-        function updateValue() {
-            const dropdown = document.getElementById('value-dropdown');
-            const selectedValue = dropdown.options[dropdown.selectedIndex].value;
-            document.getElementById('dropdown-value').textContent = selectedValue;
+        // Update the displayed content based on the clicked term
+        function updateContent(value) {
+            const contentText = {
+                Ziggy: "• The first community-owned memecoin on Zigchain.",
+                Zignaly: "• A platform for automated trading and investment management.",
+                Zigchain: "• The underlying technology that powers the Ziggy ecosystem."
+            };
+
+            document.getElementById('dropdown-value').textContent = value;
+            document.getElementById('content-text').textContent = contentText[value];
+            
+            // Optional: Update additional text if needed
+            if (value === "Zignaly") {
+                document.getElementById('additional-text').textContent = "• A platform for automated trading and investment management.";
+                document.getElementById('last-text').textContent = ""; // Clear last text
+            } else if (value === "Zigchain") {
+                document.getElementById('additional-text').textContent = "• The underlying technology that powers the Ziggy ecosystem.";
+                document.getElementById('last-text').textContent = ""; // Clear last text
+            } else {
+                document.getElementById('additional-text').textContent = "• Commemorating Zignaly's beginning with a nod towards some of the early test code shared with the community.";
+                document.getElementById('last-text').textContent = "• Representing the peace and harmony that Zignaly promotes with their community-first approach.";
+            }
         }
     </script>
 </body>
