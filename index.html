@@ -51,6 +51,30 @@
             z-index: 1;
         }
 
+        /* Coming Soon Message */
+        h2 {
+            font-size: 48px; /* Larger font size */
+            font-weight: 700; /* Bold text */
+            margin-top: 20px; /* Add space above */
+            text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+            background: linear-gradient(90deg, #ff0080, #ff8c00); /* Gradient background */
+            -webkit-background-clip: text; /* Clip background to text */
+            -webkit-text-fill-color: transparent; /* Fill text with transparent color */
+            animation: fadeIn 1s ease; /* Fade-in animation */
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Shake Animation */
         @keyframes shake {
             0% { transform: translate(0); }
