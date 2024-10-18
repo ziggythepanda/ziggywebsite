@@ -3,143 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ziggy ($ZIGGY)">
-    <title>Ziggy Splash Screen</title>
-    <link href="Fonts/Euclid Circular B Regular.ttf" rel="stylesheet"> <!-- Replace with your font URL -->
-
+    <title>3D Interactive Cube with Image Texture</title>
     <style>
-        /* General Body Styling */
-        body {
-            margin: 0;
-            font-family: 'Euclid Circular B', sans-serif;
-            background-color: #121212;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Full viewport height */
-            overflow: hidden; /* Prevent scrolling */
-            position: relative;
-        }
-
-        /* Centered Content */
-        .content {
-            text-align: center;
-            position: relative; /* To position the bubble relative to this container */
-        }
-
-        .about-image {
-            max-width: 300px;
-            height: auto;
-            cursor: pointer; /* Change cursor to pointer */
-            transition: transform 0.2s ease; /* Add transition for the shake effect */
-        }
-
-        /* Speech Bubble */
-        .speech-bubble {
+        body { margin: 0; }
+        canvas { display: block; }
+        #speech-bubble {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
             display: none; /* Initially hidden */
-            position: absolute;
-            bottom: 100%; /* Position above the image */
-            left: 50%;
-            transform: translate(-50%, -10px); /* Adjust vertical position */
-            background-color: #ffcc00; /* Bright background color */
-            color: #121212;
-            padding: 10px 15px; /* Add padding */
-            border-radius: 10px; /* Rounded edges */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Drop shadow */
-            white-space: nowrap; /* Prevent text wrapping */
             z-index: 1;
-            font-family: 'Euclid Circular B', sans-serif; /* Font style */
-            font-size: 16px; /* Font size */
-            animation: slideIn 0.3s ease; /* Slide-in animation */
-        }
-
-        /* Speech Bubble Tail */
-        .speech-bubble::after {
-            content: '';
-            position: absolute;
-            top: 100%; /* Position at the bottom of the bubble */
-            left: 50%;
-            margin-left: -10px; /* Center the tail */
-            border-width: 10px; /* Tail size */
-            border-style: solid;
-            border-color: #ffcc00 transparent transparent transparent; /* Tail color */
-        }
-
-        /* Coming Soon Message */
-        h2 {
-            font-size: 48px; /* Larger font size */
-            font-weight: 700; /* Bold text */
-            margin-top: 20px; /* Add space above */
-            text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-            background: linear-gradient(90deg, #ff0080, #ff8c00); /* Gradient background */
-            -webkit-background-clip: text; /* Clip background to text */
-            -webkit-text-fill-color: transparent; /* Fill text with transparent color */
-            animation: fadeIn 1s ease; /* Fade-in animation */
-        }
-
-        /* Fade-in Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Slide-in Animation for the Speech Bubble */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -20px);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, -10px);
-            }
-        }
-
-        /* Shake Animation */
-        @keyframes shake {
-            0% { transform: translate(0); }
-            25% { transform: translate(-5px); }
-            50% { transform: translate(5px); }
-            75% { transform: translate(-5px); }
-            100% { transform: translate(0); }
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 <body>
-
-    <!-- Centered Content -->
-    <div class="content">
-        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" 
-             alt="Ziggy Token" class="about-image" id="panda-image">
-        <h2>COMING SOON</h2>
-        <div class="speech-bubble" id="speech-bubble">Hey, that tickles!</div>
-    </div>
-
+    <div id="speech-bubble">Hey, that tickles!</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Add click event listener to the panda image
-        const pandaImage = document.getElementById('panda-image');
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Load texture
+        const textureLoader = new THREE.TextureLoader();
+        const texture = textureLoader.load('https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png', () => {
+            // Create cube geometry and material with texture
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshBasicMaterial({ map: texture });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+        });
+
+        // Set camera position
+        camera.position.z = 5;
+
+        // Speech bubble
         const speechBubble = document.getElementById('speech-bubble');
         let clickCount = 0; // Initialize click counter
 
-        pandaImage.addEventListener('click', function() {
-            // Increment the click count
-            clickCount += 1;
+        // Mouse movement
+        document.addEventListener('mousemove', (event) => {
+            const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
-            // Shake the image
-            pandaImage.style.animation = 'shake 0.5s';
-            setTimeout(() => {
-                pandaImage.style.animation = ''; // Reset animation
-            }, 500);
+            // Rotate the cube based on mouse position
+            if (scene.children.length > 1) { // Ensure the cube exists
+                const cube = scene.children[1]; // Get the cube (the second child in the scene)
+                cube.rotation.x = mouseY * Math.PI; // Rotate around X axis
+                cube.rotation.y = mouseX * Math.PI; // Rotate around Y axis
+            }
+        });
 
-            // Show the speech bubble
-            speechBubble.style.display = 'block';
+        // Click event to show speech bubble
+        document.addEventListener('click', () => {
+            clickCount += 1; // Increment click count
+            speechBubble.style.display = 'block'; // Show speech bubble
 
             // Change speech bubble text on the tenth click
             if (clickCount === 10) {
@@ -150,6 +77,21 @@
             setTimeout(() => {
                 speechBubble.style.display = 'none'; // Hide after a short delay
             }, 2000);
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
 </body>
