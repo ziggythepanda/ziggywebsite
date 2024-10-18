@@ -113,6 +113,28 @@
                 flex: 0 0 300px; /* Fixed width for the image */
             }
     
+            /* Adjustments for smaller screens */
+            @media (max-width: 768px) {
+                header {
+                    flex-direction: column; /* Stack header items */
+                    align-items: flex-start; /* Align items to the left */
+                }
+    
+                .about-container {
+                    flex-direction: column; /* Stack image and text */
+                    align-items: left; 
+                    text-align: left; 
+                }
+    
+                h2 {
+                    font-size: 28px; /* Adjust header size for mobile */
+                }
+    
+                p, ol {
+                    font-size: 16px; /* Adjust text size for mobile */
+                }
+            }
+    
             /* Links Section Styling */
             ul {
                 list-style-type: none;
@@ -192,7 +214,7 @@
     
         <!-- Footer -->
         <footer>
-            <p>Be a part of the wealth generatiion.</p>
+            <p>Be a part of the wealth generation.</p>
         </footer>
     
         <script>
