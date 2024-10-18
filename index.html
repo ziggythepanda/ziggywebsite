@@ -15,6 +15,12 @@
             background-color: #121212;
             color: #333;
             scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            box-sizing: border-box; /* Include padding and border in width and height */
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit; /* Inherit box-sizing from body */
         }
 
         .logo img {
@@ -196,7 +202,6 @@
             flex: 0 0 300px;
         }
 
-
         /* Clickable Terms Styling */
         .clickable-term {
             cursor: pointer;
@@ -325,9 +330,8 @@
         </div>
     </section>
 
-
-     <!-- How to Buy Section -->
-     <section id="buy" class="section">
+    <!-- How to Buy Section -->
+    <section id="buy" class="section">
         <div class="container about-container">
             <div>
                 <h2>HOW TO BUY</h2>
