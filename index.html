@@ -36,7 +36,7 @@
             font-size: 64px; /* Larger font size for impact */
             font-weight: 600; /* Medium bold text */
             margin-top: 20px; /* Add space above */
-            background: linear-gradient(90deg, 4bb6c0, #5b1692); /* Lighter gradient background */
+            background: linear-gradient(90deg, #4bb6c0, #5b1692); /* Lighter gradient background */
             -webkit-background-clip: text; /* Clip background to text */
             -webkit-text-fill-color: transparent; /* Fill text with transparent color */
             animation: fadeIn 3s ease; /* Fade-in animation */
@@ -84,7 +84,7 @@
         .speech-bubble {
             display: none; /* Initially hidden */
             position: absolute;
-            bottom: 100%; /* Position above the image */
+            top: 100%; /* Position below the heading */
             left: 50%;
             transform: translate(-50%, -10px); /* Adjust vertical position */
             background-color: #ffcc00; /* Bright background color */
@@ -97,6 +97,7 @@
             font-family: 'Euclid Circular B', sans-serif; /* Font style */
             font-size: 16px; /* Font size */
             animation: slideIn 0.3s ease; /* Slide-in animation */
+            margin-top: 10px; /* Space below the speech bubble */
         }
 
         /* Speech Bubble Tail */
@@ -166,6 +167,7 @@
     <!-- Centered Content -->
     <div class="content">
         <h2>COMING SOON</h2>
+        <div class="speech-bubble" id="speech-bubble">Hey, that tickles!</div> <!-- Moved speech bubble above the image -->
         <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20no%20background.png" 
              alt="Ziggy Token" class="about-image" id="panda-image">
         
@@ -173,8 +175,6 @@
             <button class="button" onclick="/* window.open('link-to-whitepaper', '_blank'); */">Read Whitepaper</button>
             <button class="button" onclick="/* window.open('link-to-site', '_self'); */">Enter Site</button>
         </div>
-        
-        <div class="speech-bubble" id="speech-bubble">Hey, that tickles!</div>
     </div>
 
     <script>
