@@ -20,8 +20,8 @@
             margin: 0;
             font-family: 'Euclid Circular B', sans-serif; /* Apply the font */
             background-color: #121212; /* Dark background */
-            height: 100vh; /* Full viewport height */
-            overflow: hidden; /* Prevent scrolling */
+            height: auto; /* Allow height to be auto for scrolling */
+            overflow-y: auto; /* Allow vertical scrolling */
             display: flex; /* Flexbox for layout */
             flex-direction: column; /* Vertical stacking */
         }
@@ -31,7 +31,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 500px; /* Increased padding for a taller header */
+            padding: 20px 5%; /* Adjusted padding for responsiveness */
             background: #121212; /* Same color as body */
             position: relative;
             z-index: 1000; /* Ensure header is above other content */
@@ -57,6 +57,20 @@
         }
         nav a:hover {
             opacity: 0.7; /* Dim the link on hover */
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .line {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: 0.4s;
         }
 
         /* Intro Text Styling */
@@ -224,11 +238,21 @@
             }
 
             nav {
-                opacity: 1; /* Make nav visible on mobile */
-                flex-direction: column; /* Stack links vertically */
-                align-items: flex-start; /* Align links to the left */
-                width: 100%; /* Full width for nav */
-                margin-top: 10px; /* Space above nav */
+                display: none; /* Hide nav for mobile */
+            }
+
+            .hamburger {
+                display: flex; /* Show hamburger icon */
+                flex-direction: column; /* Stack lines */
+                cursor: pointer; /* Pointer cursor */
+            }
+
+            .line {
+                width: 25px;
+                height: 3px;
+                background-color: white;
+                margin: 4px 0;
+                transition: 0.4s;
             }
 
             .intro-container {
@@ -253,11 +277,10 @@
 
             .new-section {
                 position: relative; /* Change to relative for stacking */
-                top: auto; /* Reset top */
-                left: auto; /* Reset left */
                 padding: 20px; /* Reduce padding for mobile */
                 opacity: 1; /* Keep it visible */
                 transform: none; /* Reset transform */
+                left: 0; /* Reset left positioning */
             }
 
             /* Adjust tokenomics section for mobile */
@@ -294,6 +317,11 @@
             <a href="#tokenomics" id="tokenomicsLink">Tokenomics</a>
             <a href="#joinCommunity" id="joinCommunityLink">Join The Community</a>
         </nav>
+        <div class="hamburger" id="hamburgerMenu" onclick="toggleNav()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
     </header>
 
     <!-- Intro Text with Image -->
@@ -338,8 +366,8 @@
     <div class="new-section" id="tokenomicsSection">
         <h2>Tokenomics</h2>
         <div class="tokenomics-section">
+            <p>$ZIGGY will be fully-vested at genesis. Upon launch, <b>15%</b> will be allocated for liquidity provision, <br> <b>10%</b> will be airdropped to Wealth Pass holders, and the remaining <b>75%</b> will be used to reward <br> other communities via routine airdrops.</p>
             <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/Tokenomics.png" alt="tokenomics image" class="tokenomics-image">
-            <p>$ZIGGY will be fully-vested at genesis. Upon launch, <b>15%</b> will be allocated for liquidity provision, <b>10%</b> will be airdropped to Wealth Pass holders, and the remaining <b>75%</b> will be used to reward other communities via routine airdrops.</p>
         </div>
     </div>
     <div class="new-section" id="joinCommunitySection">
@@ -411,8 +439,8 @@
             countUp('cutenessValue', 1000000000, 1500); // Count from 0 to ∞
         }, 3000); // Start counting after 3 seconds
 
-        // Function to replace text after 2 seconds
-        setTimeout(() => {
+// Function to replace text after 2 seconds
+setTimeout(() => {
             const fadeText = document.getElementById('fade-text');
             fadeText.classList.add('fade'); // Add fade class to start fading out
 
@@ -423,46 +451,45 @@
             }, 1000); // Wait 1 second for fade out to complete
         }, 2000); // Wait 2 seconds before starting the fade
 
-// Fade in the large image after 3 seconds
-setTimeout(() => {
-    const largeImage = document.querySelector('.large-image');
-    largeImage.classList.add('fade-in'); // Add fade-in class to start fading in
-}, 3000); // Wait 3 seconds before starting the fade-in
+        // Fade in the large image after 3 seconds
+        setTimeout(() => {
+            const largeImage = document.querySelector('.large-image');
+            largeImage.classList.add('fade-in'); // Add fade-in class to start fading in
+        }, 3000); // Wait 3 seconds before starting the fade-in
 
-// Delay showing the header links
-const links = document.querySelectorAll('nav a');
-setTimeout(() => {
-    links.forEach(link => {
-        link.style.opacity = '1'; // Fade in the links
-    });
-    document.querySelector('nav').style.opacity = '1'; // Ensure the nav becomes visible
-}, 3000); // Show links after 3 seconds
+        // Delay showing the header links
+        const links = document.querySelectorAll('nav a');
+        setTimeout(() => {
+            links.forEach(link => {
+                link.style.opacity = '1'; // Fade in the links
+            });
+            document.querySelector('nav').style.opacity = '1'; // Ensure the nav becomes visible
+        }, 3000); // Show links after 3 seconds
 
-// Navigation link click event
-const newSections = document.querySelectorAll('.new-section');
+        // Navigation link click event
+        const newSections = document.querySelectorAll('.new-section');
 
-links.forEach(link => {
-    link.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default anchor behavior
-        
-        // Slide large image and KPI section to the left
-        const kpiSection = document.getElementById('kpiSection');
-        const largeImageContainer = document.querySelector('.large-image-container');
-        kpiSection.style.transform = 'translateX(-25%)'; // Move KPIs to the left
-        largeImageContainer.style.transform = 'translateX(-25%)'; // Move large image to the left
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default anchor behavior
+                
+                // Slide large image and KPI section to the left
+                const kpiSection = document.getElementById('kpiSection');
+                const largeImageContainer = document.querySelector('.large-image-container');
+                kpiSection.style.transform = 'translateX(-25%)'; // Move KPIs to the left
+                largeImageContainer.style.transform = 'translateX(-25%)'; // Move large image to the left
 
-        // Hide all new sections
-        newSections.forEach(section => {
-            section.classList.remove('active'); // Hide all sections
+                // Hide all new sections
+                newSections.forEach(section => {
+                    section.classList.remove('active'); // Hide all sections
+                });
+
+                // Show the corresponding section based on the link clicked
+                const sectionId = link.getAttribute('href').substring(1) + 'Section'; // Get the corresponding section ID
+                document.getElementById(sectionId).classList.add('active'); // Show the relevant section
+            });
         });
-
-        // Show the corresponding section based on the link clicked
-        const sectionId = link.getAttribute('href').substring(1) + 'Section'; // Get the corresponding section ID
-        document.getElementById(sectionId).classList.add('active'); // Show the relevant section
-    });
-});
-</script>
+    </script>
 
 </body>
 </html>
-

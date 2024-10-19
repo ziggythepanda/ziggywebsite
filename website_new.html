@@ -31,7 +31,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 750px; /* Increased padding for a taller header */
+            padding: 20px 500px; /* Increased padding for a taller header */
             background: #121212; /* Same color as body */
             position: relative;
             z-index: 1000; /* Ensure header is above other content */
@@ -150,7 +150,7 @@
         /* New Section Styling */
         .new-section {
             position: absolute; /* Positioned absolutely */
-            top: 60%; /* Vertically centered */
+            top: 75%; /* Vertically centered */
             left: calc(50% + 100px); /* Positioned to the right of the large image */
             transform: translateY(-50%); /* Center vertically */
             opacity: 0; /* Start as invisible */
@@ -174,14 +174,22 @@
             font-size: 14px; /* Body text size */
         }
 
+        /* Tokenomics Section Styling */
+        .tokenomics-section {
+            display: flex; /* Flexbox for layout */
+            align-items: center; /* Center items vertically */
+            margin-top: 20px; /* Space above the section */
+            color: #ffffff; /* White text color */
+        }
+
         .tokenomics-image {
-            max-width: 75%; /* Shrink the image by another 50% */
+            max-width: 40%; /* Shrink the image */
             height: auto; /* Maintain aspect ratio */
-            left: calc(50% + 100px); /* Positioned to the right of the large image */
+            margin-left: 20px; /* Space between text and image */
         }
 
         .x-image {
-            max-width: 10%; /* Shrink the image by another 50% */
+            max-width: 10%; /* Shrink the image */
             height: auto; /* Maintain aspect ratio */
             left: calc(50% + 100px); /* Positioned to the right of the large image */
         }
@@ -260,13 +268,15 @@
     </div>
     <div class="new-section" id="howToBuySection">
         <h2>How To Buy $ZIGGY</h2>
-        <p>$ZIGGY will be available on Zigchain following it's launch. </p>
+        <p>$ZIGGY will be available on Zigchain following its launch. </p>
         <button class="button" onclick="window.open('URL_TO_POOL', '_blank')">Buy $ZIGGY (Coming Soon)</button> <!-- Replace with the actual URL -->
     </div>
     <div class="new-section" id="tokenomicsSection">
         <h2>Tokenomics</h2>
-        <p>$ZIGGY will be fully-vested at genesis. Upon launch, <b>15%</b> will be allocated for liquidity provision, <br> <b>10%</b> will be airdropped to Wealth Pass holders, and the remaining <b>75%</b> will be used to reward <br> other communities via routine airdrops.</p>
-        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/Tokenomics.png" alt="tokenomics image" class="tokenomics-image">
+        <div class="tokenomics-section">
+            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/Tokenomics.png" alt="tokenomics image" class="tokenomics-image">
+            <p>$ZIGGY will be fully-vested at genesis. Upon launch, <b>15%</b> will be allocated for liquidity provision, <b>10%</b> will be airdropped to Wealth Pass holders, and the remaining <b>75%</b> will be used to reward other communities via routine airdrops.</p>
+        </div>
     </div>
     <div class="new-section" id="joinCommunitySection">
         <h2>Join The Community </h2>
@@ -349,45 +359,3 @@
             }, 1000); // Wait 1 second for fade out to complete
         }, 2000); // Wait 2 seconds before starting the fade
 
-        // Fade in the large image after 3 seconds
-        setTimeout(() => {
-            const largeImage = document.querySelector('.large-image');
-            largeImage.classList.add('fade-in'); // Add fade-in class to start fading in
-        }, 3000); // Wait 3 seconds before starting the fade-in
-
-        // Delay showing the header links
-        const links = document.querySelectorAll('nav a');
-        setTimeout(() => {
-            links.forEach(link => {
-                link.style.opacity = '1'; // Fade in the links
-            });
-            document.querySelector('nav').style.opacity = '1'; // Ensure the nav becomes visible
-        }, 3000); // Show links after 3 seconds
-
-        // Navigation link click event
-        const newSections = document.querySelectorAll('.new-section');
-
-        links.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default anchor behavior
-                
-                // Slide large image and KPI section to the left
-                const kpiSection = document.getElementById('kpiSection');
-                const largeImageContainer = document.querySelector('.large-image-container');
-                kpiSection.style.transform = 'translateX(-25%)'; // Move KPIs to the left
-                largeImageContainer.style.transform = 'translateX(-25%)'; // Move large image to the left
-
-                // Hide all new sections
-                newSections.forEach(section => {
-                    section.classList.remove('active'); // Hide all sections
-                });
-
-                // Show the corresponding section based on the link clicked
-                const sectionId = link.getAttribute('href').substring(1) + 'Section'; // Get the corresponding section ID
-                document.getElementById(sectionId).classList.add('active'); // Show the relevant section
-            });
-        });
-    </script>
-
-</body>
-</html>
