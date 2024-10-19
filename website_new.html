@@ -40,12 +40,13 @@
         /* Logo Styling */
         .logo img {
             height: 60px; /* Increased height for the logo image */
-            /* Adjust width as needed */
         }
 
         /* Navigation Links */
         nav {
             display: flex; /* Align links horizontally */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1s ease-in; /* Smooth fade-in transition */
         }
         nav a {
             color: #ffffff; /* White text for links */
@@ -63,7 +64,7 @@
             display: flex; /* Flexbox for layout */
             align-items: center; /* Center items vertically */
             justify-content: center; /* Center items horizontally */
-            margin: 200px 800px; /* Margin for spacing from edges */
+            margin: 200px 750px; /* Margin for spacing from edges */
             margin-top: 200px; /* Additional margin for gap between header and image */
         }
 
@@ -91,9 +92,121 @@
 
         /* Image Styling */
         .intro-image {
-            height: 150px; /* Set image height to 150px, increased by 50% from 100px */
-            /* Adjust width as needed */
+            height: 150px; /* Set image height to 150px */
         }
+
+        /* Large Centered Image Styling */
+        .large-image-container {
+            display: flex; /* Flexbox for layout */
+            justify-content: center; /* Center the image horizontally */
+            margin-top: 0px; /* Space between intro and large image */
+            transition: transform 0.5s ease-in-out; /* Transition for sliding effect */
+        }
+
+        .large-image {
+            max-width: 25%; /* Shrink the image by another 50% */
+            height: auto; /* Maintain aspect ratio */
+            opacity: 0; /* Start fully transparent */
+            transition: opacity 1s; /* Transition for fade-in effect */
+        }
+
+        .fade-in {
+            opacity: 1; /* Fully opaque when class is added */
+        }
+
+        /* KPI Section Styling */
+        .kpi-container {
+            display: none; /* Hide the KPI section initially */
+            justify-content: center; /* Center the KPIs */
+            align-items: center; /* Center vertically */
+            margin-top: 20px; /* Space above the KPI section */
+            margin-left: -50px; /* Shift the KPI section 20px to the left */
+            transition: transform 0.5s ease-in-out; /* Transition for sliding effect */
+        }
+
+        .kpi {
+            text-align: center; /* Center align text */
+            color: #ffffff; /* White text color */
+            margin: 0 20px; /* Space around each KPI */
+        }
+
+        .kpi-title {
+            font-size: 18px; /* Title font size */
+            font-weight: bold; /* Bold title */
+        }
+
+        .kpi-value {
+            font-size: 24px; /* Value font size */
+            font-weight: bold; /* Bold weight for value */
+            margin-top: 5px; /* Space between title and value */
+        }
+
+        .separator {
+            font-size: 32px; /* Larger separator */
+            color: white; /* White color for the separator */
+            margin: 0 20px; /* Space around separator */
+        }
+
+        /* New Section Styling */
+        .new-section {
+            position: absolute; /* Positioned absolutely */
+            top: 60%; /* Vertically centered */
+            left: calc(50% + 100px); /* Positioned to the right of the large image */
+            transform: translateY(-50%); /* Center vertically */
+            opacity: 0; /* Start as invisible */
+            transition: opacity 0.5s; /* Fade-in transition */
+            color: #ffffff; /* White text color */
+            text-align: left; /* Left align text */
+            padding: 50px; /* Padding for text */
+        }
+
+        .new-section.active {
+            opacity: 1; /* Fade in when active */
+        }
+
+        .new-section h2 {
+            font-size: 36px; /* Same size as intro text */
+            margin: 0; /* Remove default margin */
+        }
+
+        .new-section p {
+            margin: 10px 0 0; /* Space above the paragraph */
+            font-size: 14px; /* Body text size */
+        }
+
+        .tokenomics-image {
+            max-width: 75%; /* Shrink the image by another 50% */
+            height: auto; /* Maintain aspect ratio */
+            left: calc(50% + 100px); /* Positioned to the right of the large image */
+        }
+
+        .x-image {
+            max-width: 10%; /* Shrink the image by another 50% */
+            height: auto; /* Maintain aspect ratio */
+            left: calc(50% + 100px); /* Positioned to the right of the large image */
+        }
+
+        /* Button Styling */
+        .button {
+            background-color: #4d49c3; /* Button color (purple) */
+            color: #ffffff; /* Text color */
+            border: none; /* No border */
+            border-radius: 25px; /* Rounded corners */
+            padding: 10px 30px; /* Padding */
+            font-size: 16px; /* Font size */
+            font-family: 'Euclid Circular B', sans-serif; /* Set font to Euclid Circular B */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition for background color */
+            margin-top: 20px; /* Space above the button */
+            text-align: center; /* Center text */
+            display: inline-block; /* Inline-block for button */
+            outline: none; /* Remove outline */
+        }
+
+        .button:hover {
+            background-color: #1dafb9; /* Change to blue from the gradient on hover */
+        }
+
     </style>
 </head>
 <body>
@@ -101,19 +214,19 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER.png" alt="Ziggy Logo">
+            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER.png" alt="banner">
         </div>
         <nav>
-            <a href="#about">About</a>
-            <a href="#howtobuy">How To Buy</a>
-            <a href="#tokenomics">Tokenomics</a>
-            <a href="#jointhecommunity">Join The Community</a>
+            <a href="#about" id="aboutLink">About</a>
+            <a href="#howToBuy" id="howToBuyLink">How To Buy</a>
+            <a href="#tokenomics" id="tokenomicsLink">Tokenomics</a>
+            <a href="#joinCommunity" id="joinCommunityLink">Join The Community</a>
         </nav>
     </header>
 
     <!-- Intro Text with Image -->
     <div class="intro-container">
-        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20transparent.png" alt="Example Image" class="intro-image"> <!-- Replace with your image URL -->
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20transparent.png" alt="logo" class="intro-image"> <!-- Replace with your image URL -->
         <div class="intro-text">
             A memecoin for<br>
             <span id="fade-text" class="gradient-text">a new</span><br>
@@ -121,7 +234,109 @@
         </div>
     </div>
 
+    <!-- Large Centered Image -->
+    <div class="large-image-container">
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER%20-%20no%20logo%20no%20text.png" alt="large image" class="large-image"> <!-- Replace with your large image URL -->
+    </div>
+
+    <!-- KPI Section -->
+    <div class="kpi-container" id="kpiSection">
+        <div class="kpi">
+            <div class="kpi-title">Supply</div>
+            <div id="supplyValue" class="kpi-value">0</div>
+        </div>
+        <div class="separator">|</div>
+        <div class="kpi">
+            <div class="kpi-title">Cuteness</div>
+            <div id="cutenessValue" class="kpi-value">0</div>
+        </div>
+    </div>
+
+    <!-- New Sections for Each Link -->
+    <div class="new-section" id="aboutSection">
+        <h2>About $ZIGGY</h2>
+        <p>$ZIGGY is more than your typical memecoin. In addition to commemorating Zigchain's genesis <br> and celebrating its future, $ZIGGY has exciting utility within the Zigchain ecosystem. <br> Stay tuned for more information.</p>
+        <button class="button" onclick="window.open('URL_TO_WHITEPAPER', '_blank')">Read Litepaper (Coming Soon)</button> <!-- Replace with the actual URL -->
+    </div>
+    <div class="new-section" id="howToBuySection">
+        <h2>How To Buy $ZIGGY</h2>
+        <p>$ZIGGY will be available on Zigchain following it's launch. </p>
+        <button class="button" onclick="window.open('URL_TO_POOL', '_blank')">Buy $ZIGGY (Coming Soon)</button> <!-- Replace with the actual URL -->
+    </div>
+    <div class="new-section" id="tokenomicsSection">
+        <h2>Tokenomics</h2>
+        <p>$ZIGGY will be fully-vested at genesis. Upon launch, <b>15%</b> will be allocated for liquidity provision, <br> <b>10%</b> will be airdropped to Wealth Pass holders, and the remaining <b>75%</b> will be used to reward <br> other communities via routine airdrops.</p>
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/Tokenomics.png" alt="tokenomics image" class="tokenomics-image">
+    </div>
+    <div class="new-section" id="joinCommunitySection">
+        <h2>Join The Community </h2>
+        <a href="https://twitter.com/ziggythepanda"><img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/Twitter%20Logo.png" alt="x" class="x-image"></a>
+    </div>
+
+    <!-- Include the canvas-confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
     <script>
+        // Function to format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Function to count up to a target value
+        function countUp(elementId, targetValue, duration) {
+            const element = document.getElementById(elementId);
+            const startValue = 0;
+            const startTime = performance.now();
+
+            function update() {
+                const elapsedTime = performance.now() - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                const currentValue = Math.floor(startValue + (targetValue - startValue) * progress);
+
+                // Update the displayed value with formatting
+                element.textContent = formatNumber(currentValue);
+
+                // Check if the target value has been reached
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    // Set "Cuteness" KPI to infinity sign
+                    if (elementId === 'cutenessValue') {
+                        element.textContent = '∞';
+                    }
+                    // Trigger confetti effect when the target is reached
+                    triggerConfetti(element);
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Function to trigger confetti
+        function triggerConfetti(element) {
+            const rect = element.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+
+            // Confetti with custom colors to match the gradient
+            confetti({
+                particleCount: 100,
+                angle: 90,
+                spread: 70,
+                origin: { x: x / window.innerWidth, y: y / window.innerHeight },
+                colors: ['#1dafb9', '#4d49c3'] // Custom colors matching the gradient
+            });
+        }
+
+        // Start the count-up for both KPIs after 3 seconds
+        setTimeout(() => {
+            // Show KPI section
+            document.getElementById('kpiSection').style.display = 'flex';
+
+            countUp('supplyValue', 1000000000, 1500); // Count from 0 to 1,000,000,000
+            countUp('cutenessValue', 1000000000, 1500); // Count from 0 to ∞
+        }, 3000); // Start counting after 3 seconds
+
         // Function to replace text after 2 seconds
         setTimeout(() => {
             const fadeText = document.getElementById('fade-text');
@@ -133,6 +348,45 @@
                 fadeText.classList.remove('fade'); // Remove fade class to fade back in
             }, 1000); // Wait 1 second for fade out to complete
         }, 2000); // Wait 2 seconds before starting the fade
+
+        // Fade in the large image after 3 seconds
+        setTimeout(() => {
+            const largeImage = document.querySelector('.large-image');
+            largeImage.classList.add('fade-in'); // Add fade-in class to start fading in
+        }, 3000); // Wait 3 seconds before starting the fade-in
+
+        // Delay showing the header links
+        const links = document.querySelectorAll('nav a');
+        setTimeout(() => {
+            links.forEach(link => {
+                link.style.opacity = '1'; // Fade in the links
+            });
+            document.querySelector('nav').style.opacity = '1'; // Ensure the nav becomes visible
+        }, 3000); // Show links after 3 seconds
+
+        // Navigation link click event
+        const newSections = document.querySelectorAll('.new-section');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default anchor behavior
+                
+                // Slide large image and KPI section to the left
+                const kpiSection = document.getElementById('kpiSection');
+                const largeImageContainer = document.querySelector('.large-image-container');
+                kpiSection.style.transform = 'translateX(-25%)'; // Move KPIs to the left
+                largeImageContainer.style.transform = 'translateX(-25%)'; // Move large image to the left
+
+                // Hide all new sections
+                newSections.forEach(section => {
+                    section.classList.remove('active'); // Hide all sections
+                });
+
+                // Show the corresponding section based on the link clicked
+                const sectionId = link.getAttribute('href').substring(1) + 'Section'; // Get the corresponding section ID
+                document.getElementById(sectionId).classList.add('active'); // Show the relevant section
+            });
+        });
     </script>
 
 </body>

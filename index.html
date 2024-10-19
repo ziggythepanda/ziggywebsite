@@ -19,192 +19,375 @@
         body {
             margin: 0;
             font-family: 'Euclid Circular B', sans-serif; /* Apply the font */
-            background-color: #121212;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: #121212; /* Dark background */
             height: 100vh; /* Full viewport height */
             overflow: hidden; /* Prevent scrolling */
-            position: relative;
-            padding: 10px; /* Add padding for mobile */
+            display: flex; /* Flexbox for layout */
+            flex-direction: column; /* Vertical stacking */
         }
 
-        /* Centered Content */
-        .content {
-            text-align: center;
-            position: relative; /* To position the bubble relative to this container */
-            width: 100%; /* Allow full width */
-            max-width: 600px; /* Limit width on larger screens */
-        }
-
-        /* Coming Soon Message */
-        h2 {
-            font-size: 58px; /* Slightly smaller font size for mobile */
-            font-weight: 600; /* Medium bold text */
-            margin-top: 10px; /* Reduce space above */
-            background: linear-gradient(90deg, #4bb6c0, #5b1692); /* Lighter gradient background */
-            -webkit-background-clip: text; /* Clip background to text */
-            -webkit-text-fill-color: transparent; /* Fill text with transparent color */
-            animation: fadeIn 3s ease; /* Fade-in animation */
-            letter-spacing: 2px; /* Add some space between letters */
-            line-height: 1.2; /* Increase line height for better readability */
-        }
-
-        .about-image {
-            max-width: 300px;
-            height: auto;
-            cursor: pointer; /* Change cursor to pointer */
-            transition: transform 0.2s ease; /* Add transition for the shake effect */
-            margin-top: 10px; /* Space above the image */
-        }
-
-        /* Button Container */
-        .button-container {
-            margin-top: 10px; /* Reduce space above buttons */
+        /* Header Styling */
+        header {
             display: flex;
-            justify-content: center; /* Center buttons horizontally */
-            gap: 20px; /* Space between buttons */
-            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 750px; /* Increased padding for a taller header */
+            background: #121212; /* Same color as body */
+            position: relative;
+            z-index: 1000; /* Ensure header is above other content */
+        }
+
+        /* Logo Styling */
+        .logo img {
+            height: 60px; /* Increased height for the logo image */
+        }
+
+        /* Navigation Links */
+        nav {
+            display: flex; /* Align links horizontally */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1s ease-in; /* Smooth fade-in transition */
+        }
+        nav a {
+            color: #ffffff; /* White text for links */
+            text-decoration: none; /* Remove underline */
+            margin: 0 15px; /* Space between links */
+            font-weight: 500; /* Regular weight */
+            transition: opacity 0.3s; /* Smooth transition for dimming effect */
+        }
+        nav a:hover {
+            opacity: 0.7; /* Dim the link on hover */
+        }
+
+        /* Intro Text Styling */
+        .intro-container {
+            display: flex; /* Flexbox for layout */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+            margin: 200px 750px; /* Margin for spacing from edges */
+            margin-top: 200px; /* Additional margin for gap between header and image */
+        }
+
+        .intro-text {
+            color: #ffffff; /* White text color */
+            font-size: 36px; /* Large font size */
+            font-weight: bold; /* Bold text */
+            line-height: 1.2; /* Line height for better spacing */
+            margin-left: 40px; /* Space between image and text */
+            text-align: left; /* Align text to the left */
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(90deg, #1dafb9, #4d49c3); /* Blue to purple gradient */
+            -webkit-background-clip: text; /* Clipping the background to the text */
+            -webkit-text-fill-color: transparent; /* Make text fill transparent */
+        }
+
+        /* Fade Effect */
+        .fade {
+            opacity: 0; /* Start fully transparent */
+            transition: opacity 1s; /* Transition for fading effect */
+        }
+
+        /* Image Styling */
+        .intro-image {
+            height: 150px; /* Set image height to 150px */
+        }
+
+        /* Large Centered Image Styling */
+        .large-image-container {
+            display: flex; /* Flexbox for layout */
+            justify-content: center; /* Center the image horizontally */
+            margin-top: 0px; /* Space between intro and large image */
+            transition: transform 0.5s ease-in-out; /* Transition for sliding effect */
+        }
+
+        .large-image {
+            max-width: 25%; /* Shrink the image by another 50% */
+            height: auto; /* Maintain aspect ratio */
+            opacity: 0; /* Start fully transparent */
+            transition: opacity 1s; /* Transition for fade-in effect */
+        }
+
+        .fade-in {
+            opacity: 1; /* Fully opaque when class is added */
+        }
+
+        /* KPI Section Styling */
+        .kpi-container {
+            display: none; /* Hide the KPI section initially */
+            justify-content: center; /* Center the KPIs */
+            align-items: center; /* Center vertically */
+            margin-top: 20px; /* Space above the KPI section */
+            margin-left: -50px; /* Shift the KPI section 20px to the left */
+            transition: transform 0.5s ease-in-out; /* Transition for sliding effect */
+        }
+
+        .kpi {
+            text-align: center; /* Center align text */
+            color: #ffffff; /* White text color */
+            margin: 0 20px; /* Space around each KPI */
+        }
+
+        .kpi-title {
+            font-size: 18px; /* Title font size */
+            font-weight: bold; /* Bold title */
+        }
+
+        .kpi-value {
+            font-size: 24px; /* Value font size */
+            font-weight: bold; /* Bold weight for value */
+            margin-top: 5px; /* Space between title and value */
+        }
+
+        .separator {
+            font-size: 32px; /* Larger separator */
+            color: white; /* White color for the separator */
+            margin: 0 20px; /* Space around separator */
+        }
+
+        /* New Section Styling */
+        .new-section {
+            position: absolute; /* Positioned absolutely */
+            top: 60%; /* Vertically centered */
+            left: calc(50% + 100px); /* Positioned to the right of the large image */
+            transform: translateY(-50%); /* Center vertically */
+            opacity: 0; /* Start as invisible */
+            transition: opacity 0.5s; /* Fade-in transition */
+            color: #ffffff; /* White text color */
+            text-align: left; /* Left align text */
+            padding: 50px; /* Padding for text */
+        }
+
+        .new-section.active {
+            opacity: 1; /* Fade in when active */
+        }
+
+        .new-section h2 {
+            font-size: 36px; /* Same size as intro text */
+            margin: 0; /* Remove default margin */
+        }
+
+        .new-section p {
+            margin: 10px 0 0; /* Space above the paragraph */
+            font-size: 14px; /* Body text size */
+        }
+
+        .tokenomics-image {
+            max-width: 75%; /* Shrink the image by another 50% */
+            height: auto; /* Maintain aspect ratio */
+            left: calc(50% + 100px); /* Positioned to the right of the large image */
+        }
+
+        .x-image {
+            max-width: 10%; /* Shrink the image by another 50% */
+            height: auto; /* Maintain aspect ratio */
+            left: calc(50% + 100px); /* Positioned to the right of the large image */
         }
 
         /* Button Styling */
         .button {
-            width: 180px; /* Increased width for buttons */
-            position: relative;
-            overflow: hidden; /* Hide the fill effect */
-            color: white; /* Text color */
+            background-color: #4d49c3; /* Button color (purple) */
+            color: #ffffff; /* Text color */
             border: none; /* No border */
-            border-radius: 5px; /* Rounded corners */
-            padding: 15px; /* Padding */
-            font-size: 16px; /* Larger font size for better readability */
-            cursor: not-allowed; /* Change cursor to indicate not clickable */
-            background: linear-gradient(90deg, #6a11cb, #2575fc); /* Purple to blue gradient */
-            transition: transform 0.2s; /* Transition for button lift effect */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
-            text-align: center; /* Center text within button */
-        }
-
-        /* Speech Bubble */
-        .speech-bubble {
-            display: none; /* Initially hidden */
-            position: absolute;
-            bottom: 100%; /* Position above the image */
-            left: 50%;
-            transform: translate(-50%, -10px); /* Adjust vertical position */
-            background-color: #ffcc00; /* Bright background color */
-            color: #121212;
-            padding: 10px 15px; /* Add padding */
-            border-radius: 10px; /* Rounded edges */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Drop shadow */
-            white-space: nowrap; /* Prevent text wrapping */
-            z-index: 1;
+            border-radius: 25px; /* Rounded corners */
+            padding: 10px 30px; /* Padding */
             font-size: 16px; /* Font size */
-            animation: slideIn 0.3s ease; /* Slide-in animation */
-            margin-bottom: 10px; /* Space below the speech bubble */
+            font-family: 'Euclid Circular B', sans-serif; /* Set font to Euclid Circular B */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition for background color */
+            margin-top: 20px; /* Space above the button */
+            text-align: center; /* Center text */
+            display: inline-block; /* Inline-block for button */
+            outline: none; /* Remove outline */
         }
 
-        /* Speech Bubble Tail */
-        .speech-bubble::after {
-            content: '';
-            top: 100%; /* Position at the bottom of the bubble */
-            left: 50%;
-            margin-left: -10px; /* Center the tail */
-            border-width: 10px; /* Tail size */
-            border-style: solid;
-            border-color: #ffcc00 transparent transparent transparent; /* Tail color */
+        .button:hover {
+            background-color: #1dafb9; /* Change to blue from the gradient on hover */
         }
 
-        /* Fade-in Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Slide-in Animation for the Speech Bubble */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -20px);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, -10px);
-            }
-        }
-
-        /* Shake Animation */
-        @keyframes shake {
-            0% { transform: translate(0); }
-            25% { transform: translate(-5px); }
-            50% { transform: translate(5px); }
-            75% { transform: translate(-5px); }
-            100% { transform: translate(0); }
-        }
-
-        /* Responsive Design Adjustments */
-        @media (max-width: 768px) {
-            h2 {
-                font-size: 48px; /* Adjust font size for smaller screens */
-            }
-
-            .button {
-                width: 150px; /* Maintain button width for mobile */
-                font-size: 16px; /* Adjust font size for buttons */
-            }
-
-            .about-image {
-                max-width: 80%; /* Allow image to scale down */
-            }
-        }
     </style>
 </head>
 <body>
+    
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER.png" alt="banner">
+        </div>
+        <nav>
+            <a href="#about" id="aboutLink">About</a>
+            <a href="#howToBuy" id="howToBuyLink">How To Buy</a>
+            <a href="#tokenomics" id="tokenomicsLink">Tokenomics</a>
+            <a href="#joinCommunity" id="joinCommunityLink">Join The Community</a>
+        </nav>
+    </header>
 
-    <!-- Centered Content -->
-    <div class="content">
-        <h2>COMING SOON</h2>
-        <div class="speech-bubble" id="speech-bubble">Hey, that tickles!</div> <!-- Positioned above the image -->
-        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20transparent.png" 
-             alt="Ziggy Token" class="about-image" id="panda-image">
-        
+    <!-- Intro Text with Image -->
+    <div class="intro-container">
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/LOGO%20-%20transparent.png" alt="logo" class="intro-image"> <!-- Replace with your image URL -->
+        <div class="intro-text">
+            A memecoin for<br>
+            <span id="fade-text" class="gradient-text">a new</span><br>
+            generation.
+        </div>
+    </div>
 
+    <!-- Large Centered Image -->
+    <div class="large-image-container">
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/BANNER%20-%20no%20logo%20no%20text.png" alt="large image" class="large-image"> <!-- Replace with your large image URL -->
+    </div>
+
+    <!-- KPI Section -->
+    <div class="kpi-container" id="kpiSection">
+        <div class="kpi">
+            <div class="kpi-title">Supply</div>
+            <div id="supplyValue" class="kpi-value">0</div>
+        </div>
+        <div class="separator">|</div>
+        <div class="kpi">
+            <div class="kpi-title">Cuteness</div>
+            <div id="cutenessValue" class="kpi-value">0</div>
+        </div>
+    </div>
+
+    <!-- New Sections for Each Link -->
+    <div class="new-section" id="aboutSection">
+        <h2>About $ZIGGY</h2>
+        <p>$ZIGGY is more than your typical memecoin. In addition to commemorating Zigchain's genesis <br> and celebrating its future, $ZIGGY has exciting utility within the Zigchain ecosystem. <br> Stay tuned for more information.</p>
+        <button class="button" onclick="window.open('URL_TO_WHITEPAPER', '_blank')">Read Litepaper (Coming Soon)</button> <!-- Replace with the actual URL -->
+    </div>
+    <div class="new-section" id="howToBuySection">
+        <h2>How To Buy $ZIGGY</h2>
+        <p>$ZIGGY will be available on Zigchain following it's launch. </p>
+        <button class="button" onclick="window.open('URL_TO_POOL', '_blank')">Buy $ZIGGY (Coming Soon)</button> <!-- Replace with the actual URL -->
+    </div>
+    <div class="new-section" id="tokenomicsSection">
+        <h2>Tokenomics</h2>
+        <p>$ZIGGY will be fully-vested at genesis. Upon launch, <b>15%</b> will be allocated for liquidity provision, <br> <b>10%</b> will be airdropped to Wealth Pass holders, and the remaining <b>75%</b> will be used to reward <br> other communities via routine airdrops.</p>
+        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/Tokenomics.png" alt="tokenomics image" class="tokenomics-image">
+    </div>
+    <div class="new-section" id="joinCommunitySection">
+        <h2>Join The Community </h2>
+        <a href="https://twitter.com/ziggythepanda"><img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/Twitter%20Logo.png" alt="x" class="x-image"></a>
+    </div>
+
+    <!-- Include the canvas-confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
     <script>
-        // Add click event listener to the panda image
-        const pandaImage = document.getElementById('panda-image');
-        const speechBubble = document.getElementById('speech-bubble');
-        let clickCount = 0; // Initialize click counter
+        // Function to format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
 
-        pandaImage.addEventListener('click', function() {
-            // Increment the click count
-            clickCount += 1;
+        // Function to count up to a target value
+        function countUp(elementId, targetValue, duration) {
+            const element = document.getElementById(elementId);
+            const startValue = 0;
+            const startTime = performance.now();
 
-            // Shake the image
-            pandaImage.style.animation = 'shake 0.5s';
-            setTimeout(() => {
-                pandaImage.style.animation = ''; // Reset animation
-            }, 500);
+            function update() {
+                const elapsedTime = performance.now() - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                const currentValue = Math.floor(startValue + (targetValue - startValue) * progress);
 
-            // Show the speech bubble
-            speechBubble.style.display = 'block';
+                // Update the displayed value with formatting
+                element.textContent = formatNumber(currentValue);
 
-            // Change speech bubble text on the tenth click
-            if (clickCount === 10) {
-                speechBubble.textContent = 'SERIOUSLY, STOP!';
+                // Check if the target value has been reached
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    // Set "Cuteness" KPI to infinity sign
+                    if (elementId === 'cutenessValue') {
+                        element.textContent = '∞';
+                    }
+                    // Trigger confetti effect when the target is reached
+                    triggerConfetti(element);
+                }
             }
 
-            // Hide the speech bubble after 2 seconds
+            requestAnimationFrame(update);
+        }
+
+        // Function to trigger confetti
+        function triggerConfetti(element) {
+            const rect = element.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+
+            // Confetti with custom colors to match the gradient
+            confetti({
+                particleCount: 100,
+                angle: 90,
+                spread: 70,
+                origin: { x: x / window.innerWidth, y: y / window.innerHeight },
+                colors: ['#1dafb9', '#4d49c3'] // Custom colors matching the gradient
+            });
+        }
+
+        // Start the count-up for both KPIs after 3 seconds
+        setTimeout(() => {
+            // Show KPI section
+            document.getElementById('kpiSection').style.display = 'flex';
+
+            countUp('supplyValue', 1000000000, 1500); // Count from 0 to 1,000,000,000
+            countUp('cutenessValue', 1000000000, 1500); // Count from 0 to ∞
+        }, 3000); // Start counting after 3 seconds
+
+        // Function to replace text after 2 seconds
+        setTimeout(() => {
+            const fadeText = document.getElementById('fade-text');
+            fadeText.classList.add('fade'); // Add fade class to start fading out
+
+            // Wait for the fade transition to complete before changing the text
             setTimeout(() => {
-                speechBubble.style.display = 'none'; // Hide after a short delay
-            }, 2000);
+                fadeText.textContent = 'wealth'; // Change text
+                fadeText.classList.remove('fade'); // Remove fade class to fade back in
+            }, 1000); // Wait 1 second for fade out to complete
+        }, 2000); // Wait 2 seconds before starting the fade
+
+        // Fade in the large image after 3 seconds
+        setTimeout(() => {
+            const largeImage = document.querySelector('.large-image');
+            largeImage.classList.add('fade-in'); // Add fade-in class to start fading in
+        }, 3000); // Wait 3 seconds before starting the fade-in
+
+        // Delay showing the header links
+        const links = document.querySelectorAll('nav a');
+        setTimeout(() => {
+            links.forEach(link => {
+                link.style.opacity = '1'; // Fade in the links
+            });
+            document.querySelector('nav').style.opacity = '1'; // Ensure the nav becomes visible
+        }, 3000); // Show links after 3 seconds
+
+        // Navigation link click event
+        const newSections = document.querySelectorAll('.new-section');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default anchor behavior
+                
+                // Slide large image and KPI section to the left
+                const kpiSection = document.getElementById('kpiSection');
+                const largeImageContainer = document.querySelector('.large-image-container');
+                kpiSection.style.transform = 'translateX(-25%)'; // Move KPIs to the left
+                largeImageContainer.style.transform = 'translateX(-25%)'; // Move large image to the left
+
+                // Hide all new sections
+                newSections.forEach(section => {
+                    section.classList.remove('active'); // Hide all sections
+                });
+
+                // Show the corresponding section based on the link clicked
+                const sectionId = link.getAttribute('href').substring(1) + 'Section'; // Get the corresponding section ID
+                document.getElementById(sectionId).classList.add('active'); // Show the relevant section
+            });
         });
     </script>
+
 </body>
 </html>
