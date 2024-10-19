@@ -104,7 +104,7 @@
         }
 
         .large-image {
-            max-width: 25%; /* Shrink the image by another 50% */
+            max-width: 25%; /* Shrink the image */
             height: auto; /* Maintain aspect ratio */
             opacity: 0; /* Start fully transparent */
             transition: opacity 1s; /* Transition for fade-in effect */
@@ -247,11 +247,17 @@
                 max-width: 100%; /* Full width for large image */
             }
 
+            .kpi-container {
+                flex-direction: column; /* Stack KPIs vertically */
+            }
+
             .new-section {
+                position: relative; /* Change to relative for stacking */
+                top: auto; /* Reset top */
+                left: auto; /* Reset left */
                 padding: 20px; /* Reduce padding for mobile */
-                left: 5%; /* Adjust position for mobile */
-                top: auto; /* Reset top positioning */
-                transform: translateY(0); /* Reset transform */
+                opacity: 1; /* Keep it visible */
+                transform: none; /* Reset transform */
             }
 
             /* Adjust tokenomics section for mobile */
@@ -332,8 +338,8 @@
     <div class="new-section" id="tokenomicsSection">
         <h2>Tokenomics</h2>
         <div class="tokenomics-section">
-            <p>$ZIGGY will be fully-vested at genesis. Upon launch, <b>15%</b> will be allocated for liquidity provision, <br> <b>10%</b> will be airdropped to Wealth Pass holders, and the remaining <b>75%</b> will be used to reward <br> other communities via routine airdrops.</p>
             <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/Tokenomics.png" alt="tokenomics image" class="tokenomics-image">
+            <p>$ZIGGY will be fully-vested at genesis. Upon launch, <b>15%</b> will be allocated for liquidity provision, <b>10%</b> will be airdropped to Wealth Pass holders, and the remaining <b>75%</b> will be used to reward other communities via routine airdrops.</p>
         </div>
     </div>
     <div class="new-section" id="joinCommunitySection">
@@ -417,8 +423,46 @@
             }, 1000); // Wait 1 second for fade out to complete
         }, 2000); // Wait 2 seconds before starting the fade
 
-        // Fade in the large image after 3 seconds
-        setTimeout(() => {
-            const largeImage = document.querySelector('.large-image');
-            largeImage.classList.add('fade-in'); // Add fade-in class to start fading in
-        }, 3000); // Wait 3 seconds before starting the fade
+// Fade in the large image after 3 seconds
+setTimeout(() => {
+    const largeImage = document.querySelector('.large-image');
+    largeImage.classList.add('fade-in'); // Add fade-in class to start fading in
+}, 3000); // Wait 3 seconds before starting the fade-in
+
+// Delay showing the header links
+const links = document.querySelectorAll('nav a');
+setTimeout(() => {
+    links.forEach(link => {
+        link.style.opacity = '1'; // Fade in the links
+    });
+    document.querySelector('nav').style.opacity = '1'; // Ensure the nav becomes visible
+}, 3000); // Show links after 3 seconds
+
+// Navigation link click event
+const newSections = document.querySelectorAll('.new-section');
+
+links.forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        
+        // Slide large image and KPI section to the left
+        const kpiSection = document.getElementById('kpiSection');
+        const largeImageContainer = document.querySelector('.large-image-container');
+        kpiSection.style.transform = 'translateX(-25%)'; // Move KPIs to the left
+        largeImageContainer.style.transform = 'translateX(-25%)'; // Move large image to the left
+
+        // Hide all new sections
+        newSections.forEach(section => {
+            section.classList.remove('active'); // Hide all sections
+        });
+
+        // Show the corresponding section based on the link clicked
+        const sectionId = link.getAttribute('href').substring(1) + 'Section'; // Get the corresponding section ID
+        document.getElementById(sectionId).classList.add('active'); // Show the relevant section
+    });
+});
+</script>
+
+</body>
+</html>
+
