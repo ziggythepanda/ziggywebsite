@@ -174,14 +174,22 @@
             font-size: 14px; /* Body text size */
         }
 
+        /* Tokenomics Section Styling */
+        .tokenomics-section {
+            display: flex; /* Flexbox for layout */
+            align-items: center; /* Center items vertically */
+            margin-top: 20px; /* Space above the section */
+            color: #ffffff; /* White text color */
+        }
+
         .tokenomics-image {
-            max-width: 75%; /* Shrink the image by another 50% */
+            max-width: 40%; /* Shrink the image */
             height: auto; /* Maintain aspect ratio */
-            left: calc(50% + 100px); /* Positioned to the right of the large image */
+            margin-left: 20px; /* Space between text and image */
         }
 
         .x-image {
-            max-width: 10%; /* Shrink the image by another 50% */
+            max-width: 10%; /* Shrink the image */
             height: auto; /* Maintain aspect ratio */
             left: calc(50% + 100px); /* Positioned to the right of the large image */
         }
@@ -260,13 +268,15 @@
     </div>
     <div class="new-section" id="howToBuySection">
         <h2>How To Buy $ZIGGY</h2>
-        <p>$ZIGGY will be available on Zigchain following it's launch. </p>
+        <p>$ZIGGY will be available on Zigchain following its launch. </p>
         <button class="button" onclick="window.open('URL_TO_POOL', '_blank')">Buy $ZIGGY (Coming Soon)</button> <!-- Replace with the actual URL -->
     </div>
     <div class="new-section" id="tokenomicsSection">
         <h2>Tokenomics</h2>
-        <p>$ZIGGY will be fully-vested at genesis. Upon launch, <b>15%</b> will be allocated for liquidity provision, <br> <b>10%</b> will be airdropped to Wealth Pass holders, and the remaining <b>75%</b> will be used to reward <br> other communities via routine airdrops.</p>
-        <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/Tokenomics.png" alt="tokenomics image" class="tokenomics-image">
+        <div class="tokenomics-section">
+            <img src="https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/refs/heads/main/IMAGES/Tokenomics.png" alt="tokenomics image" class="tokenomics-image">
+            <p>$ZIGGY will be fully-vested at genesis. Upon launch, <b>15%</b> will be allocated for liquidity provision, <br> <b>10%</b> will be airdropped to Wealth Pass holders, and the remaining <b>75%</b> will be used to reward <br> other communities via routine airdrops.</p>
+        </div>
     </div>
     <div class="new-section" id="joinCommunitySection">
         <h2>Join The Community </h2>
