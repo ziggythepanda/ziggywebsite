@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ziggy ($ZIGGY)">
     <title>Ziggy Splash Screen</title>
-    <link href="Fonts/Euclid Circular B', sans-serif" rel="stylesheet"> <!-- Replace with your font URL -->
 
     <style>
+        /* Load the font from GitHub */
+        @font-face {
+            font-family: 'Euclid Circular B';
+            src: url('https://raw.githubusercontent.com/ziggythepanda/ziggywebsite/main/Fonts/Euclid%20Circular%20B%20Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         /* General Body Styling */
         body {
             margin: 0;
-            font-family: 'Euclid Circular B', sans-serif;
+            font-family: 'Euclid Circular B', sans-serif; /* Apply the font */
             background-color: #121212;
             color: #fff;
             display: flex;
@@ -72,7 +79,6 @@
             padding: 15px; /* Padding */
             font-size: 16px; /* Larger font size for better readability */
             cursor: pointer; /* Change cursor to indicate enabled state */
-            font-family: 'Euclid Circular B', sans-serif; /* Use the same font */
             background: linear-gradient(90deg, #6a11cb, #2575fc); /* Purple to blue gradient */
             transition: transform 0.2s; /* Transition for button lift effect */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
@@ -93,7 +99,6 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Drop shadow */
             white-space: nowrap; /* Prevent text wrapping */
             z-index: 1;
-            font-family: 'Euclid Circular B', sans-serif; /* Font style */
             font-size: 16px; /* Font size */
             animation: slideIn 0.3s ease; /* Slide-in animation */
             margin-bottom: 10px; /* Space below the speech bubble */
